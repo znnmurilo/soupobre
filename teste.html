@@ -118,10 +118,10 @@
         class="flex items-center justify-between px-4 py-3 fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-90 flex-wrap md:flex-nowrap">
         <div class="flex items-center space-x-4 w-full md:w-auto">
             <img alt="Logo da Netflix em vermelho com texto branco sobre fundo preto" class="h-10 w-auto" height="40"
-                src="https://pbs.twimg.com/profile_images/2264417871/5p6h9teah98pzp567ayd_400x400.jpeg" width="100" />
-            <button aria-label="Solicitar filme" id="request-movie-btn"
-                class="ml-4 hidden md:inline-block bg-red-600 hover:bg-red-700 transition px-4 py-2 rounded font-semibold text-sm whitespace-nowrap">
-                Solicitar inclusão de catálogo
+                src="https://img.freepik.com/vetores-gratis/ilustracao-de-pirata-com-caveira-gritando_43623-898.jpg?semt=ais_hybrid&w=740"
+                width="100" />
+            <button aria-label="Solicitar filme" id="request-movie-btn">
+                <a href="">Tutorial de Download</a>
             </button>
             <button aria-expanded="false" aria-label="Abrir menu"
                 class="md:hidden text-white focus:outline-none focus:ring-2 focus:ring-red-600 ml-auto"
@@ -259,7 +259,7 @@
     </head>
     <!-- Contêiner do botão -->
     <div class="button-container">
-        <a href="index.html" class="button">Voltar aos filmes</a>
+        <a href="index.html" class="button">Voltar aos filmes/séries</a>
     </div>
 
 
@@ -279,10 +279,25 @@
                     data-category="jogos"
                     data-description="Grand Theft Auto V é um jogo de ação e aventura de 2013 desenvolvido pela Rockstar North e publicado pela Rockstar Games. É o sétimo título principal da série Grand Theft Auto, seguindo Grand Theft Auto IV de 2008, e o décimo quinto no total."
                     data-iframe="https://utweb.rainberrytv.com/gui/index.html?v=1.4.0.6042&localauth=localapie25b0362bbf0e5d5:#/dashboard"
-                    data-title="TESTE GTA" role="button" tabindex="0">
+                    data-title="GTA 5 | GRAND THEFT AUTO 5" role="button" tabindex="0">
                     <img alt="Poster da série Breaking Bad com fundo escuro e texto amarelo"
                         class="w-full h-auto rounded" height="450" loading="lazy"
-                        src="https://upload.wikimedia.org/wikipedia/pt/8/80/Grand_Theft_Auto_V_capa.png" width="320" />
+                        src="https://nxplaygames.com.br/wp-content/uploads/2020/09/gta5-pc-steam-key.jpg" width="320" />
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
+                        <i class="fas fa-play-circle">
+                        </i>
+                    </div>
+                </div>
+                <div aria-label="Abrir modal de Breaking Bad" aria-pressed="false"
+                    class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
+                    data-category="jogos"
+                    data-description="Grand Theft Auto V é um jogo de ação e aventura de 2013 desenvolvido pela Rockstar North e publicado pela Rockstar Games. É o sétimo título principal da série Grand Theft Auto, seguindo Grand Theft Auto IV de 2008, e o décimo quinto no total."
+                    data-iframe="https://utweb.rainberrytv.com/gui/index.html?v=1.4.0.6042&localauth=localapie25b0362bbf0e5d5:#/dashboard"
+                    data-title="RED DEAD 2 | RED DEAD REDEMPTION 2" role="button" tabindex="0">
+                    <img alt="" class="w-full h-auto rounded" height="450" loading="lazy"
+                        src="https://image.api.playstation.com/vulcan/ap/rnd/202308/0209/e02c2acc354f7377c8327491ad4527145cf07653d0615545.jpg"
+                        width="320" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
                         <i class="fas fa-play-circle">
@@ -345,7 +360,7 @@
             <input type="text" name="name" placeholder="Seu nome" required>
             <input type="email" name="email" placeholder="Seu email" required>
             <textarea name="message"
-                placeholder="Solicite um filme no catálogo, será disponibilizado em até 48h e será alertado em seu email quando disponível."
+                placeholder="Solicite um jogo no catálogo, será disponibilizado em até 48h e será alertado em seu email quando disponível."
                 required></textarea>
             <button type="submit">Solicitar inclusão de catálogo</button>
 
