@@ -34,94 +34,15 @@
 		src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7764305677166223">
 		</script>
 </head>
-<!DOCTYPE html>
-<html lang="pt-BR">
 
-<head>
-	<meta charset="UTF-8">
-	<title>Filme Online</title>
-	<style>
-		/* Modal */
-		.modal-overlay {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: rgba(10, 10, 10, 0.9);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			z-index: 9999;
-		}
-
-		.modal-content {
-			background-color: #111;
-			color: #fff;
-			padding: 30px;
-			border-radius: 12px;
-			max-width: 600px;
-			width: 90%;
-			text-align: center;
-			box-shadow: 0 0 10px #000;
-			font-family: sans-serif;
-		}
-
-		.modal-content h2 {
-			color: #e91e63;
-			margin-bottom: 15px;
-		}
-
-		.modal-content p {
-			margin-bottom: 15px;
-			line-height: 1.4;
-		}
-
-		.modal-content button {
-			padding: 12px 20px;
-			background-color: #e91e63;
-			color: white;
-			border: none;
-			border-radius: 8px;
-			font-weight: bold;
-			cursor: pointer;
-			transition: background 0.3s;
-		}
-
-		.modal-content button:hover {
-			background-color: #c2185b;
-		}
-	</style>
-</head>
-
-<body>
-
-	<!-- Modal -->
-	<div class="modal-overlay" id="modal">
-		<div class="modal-content">
-			<h2>Obrigado por experimentar a versão beta do nosso site!</h2>
-			<p>
-				Ao clicar para reproduzir, será aberto uma nova guia com um anúncio. Retorne ao site e continue clicando
-				e fechando as novas guias até a reprodução começar.
-			</p>
-
-			<button onclick="document.getElementById('modal').style.display='none'">Entendi</button>
-		</div>
-	</div>
-
-	<!-- Conteúdo da página -->
-
-
-</body>
-
-</html>
 
 <body class="bg-black text-white min-h-screen flex flex-col">
 	<!-- Navbar -->
 	<nav
 		class="flex items-center justify-between px-4 py-3 fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-90 flex-wrap md:flex-nowrap">
 		<div class="flex items-center space-x-4 w-full md:w-auto">
-
+			<img alt="Logo da Netflix em vermelho com texto branco sobre fundo preto" class="h-10 w-auto" height="40"
+				src="https://storage.googleapis.com/a1aa/image/f64bb2e3-4948-40dc-da70-f364214a0ed8.jpg" width="100" />
 			<button aria-label="Solicitar filme" id="request-movie-btn"
 				class="ml-4 hidden md:inline-block bg-red-600 hover:bg-red-700 transition px-4 py-2 rounded font-semibold text-sm whitespace-nowrap">
 				Solicitar Filme
@@ -132,70 +53,67 @@
 				<i class="fas fa-bars text-2xl">
 				</i>
 			</button>
-			<p></p><- Pesquisar </div>
-				<ul class="hidden md:flex space-x-6 font-semibold text-sm flex-wrap md:flex-nowrap w-full md:w-auto mt-3 md:mt-0"
-					id="category-list">
-					<li>
-						<button class="hover:text-red-600 transition focus:outline-none" data-category="all"
-							type="button">
-							Todos
-						</button>
-					</li>
-					<li>
-						<button class="hover:text-red-600 transition focus:outline-none" data-category="series"
-							type="button">
-							Series
-						</button>
-					</li>
-					<li>
-						<button class="hover:text-red-600 transition focus:outline-none" data-category="bettercallsaul"
-							type="button">
-							Filmes
-						</button>
-					</li>
-				</ul>
-				<div
-					class="flex items-center space-x-4 text-sm font-semibold mt-4 md:mt-0 w-full md:w-auto justify-between md:justify-start">
-					<div class="relative w-full md:w-auto hidden md:block">
-						<input aria-label="Pesquisar filmes"
-							class="rounded bg-gray-900 px-3 py-1 w-full md:w-48 focus:outline-none focus:ring-2 focus:ring-red-600"
-							id="search-input" placeholder="Pesquisar" type="search" />
-						<button class="absolute right-1 top-1 text-gray-400 hover:text-red-600 transition"
-							id="search-btn" type="button">
-							<i class="fas fa-search">
-							</i>
-						</button>
-					</div>
-					<button class="hover:text-red-600 transition hidden md:block" type="button">
-						Pesquisar
+		</div>
+		<ul class="hidden md:flex space-x-6 font-semibold text-sm flex-wrap md:flex-nowrap w-full md:w-auto mt-3 md:mt-0"
+			id="category-list">
+			<li>
+				<button class="hover:text-red-600 transition focus:outline-none" data-category="all" type="button">
+					Todos
+				</button>
+			</li>
+			<li>
+				<button class="hover:text-red-600 transition focus:outline-none" data-category="series" type="button">
+					Series
+				</button>
+			</li>
+			<li>
+				<button class="hover:text-red-600 transition focus:outline-none" data-category="bettercallsaul"
+					type="button">
+					Filmes
+				</button>
+			</li>
+		</ul>
+		<div
+			class="flex items-center space-x-4 text-sm font-semibold mt-4 md:mt-0 w-full md:w-auto justify-between md:justify-start">
+			<div class="relative w-full md:w-auto hidden md:block">
+				<input aria-label="Pesquisar filmes"
+					class="rounded bg-gray-900 px-3 py-1 w-full md:w-48 focus:outline-none focus:ring-2 focus:ring-red-600"
+					id="search-input" placeholder="Pesquisar" type="search" />
+				<button class="absolute right-1 top-1 text-gray-400 hover:text-red-600 transition" id="search-btn"
+					type="button">
+					<i class="fas fa-search">
+					</i>
+				</button>
+			</div>
+			<button class="hover:text-red-600 transition hidden md:block" type="button">
+				Pesquisar
+			</button>
+			<button class="hover:text-red-600 transition hidden md:block" type="button">
+				<i class="fas fa-bell">
+				</i>
+			</button>
+
+			<!-- Mobile Search and buttons -->
+			<div class="w-full md:hidden hidden mt-4 space-y-4" id="mobile-menu">
+				<div class="relative w-full">
+					<input aria-label="Pesquisar filmes"
+						class="rounded bg-gray-900 px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-red-600"
+						id="mobile-search-input" placeholder="Pesquisar" type="search" />
+					<button class="absolute right-2 top-2 text-gray-400 hover:text-red-600 transition"
+						id="mobile-search-btn" type="button">
+						<i class="fas fa-search">
+						</i>
 					</button>
-					<button class="hover:text-red-600 transition hidden md:block" type="button">
+				</div>
+				<div class="flex space-x-6 font-semibold text-sm justify-center">
+					<button class="hover:text-red-600 transition" type="button" id="mobile-request-movie-btn">
+						Solicitar Filme
+					</button>
+					<button class="hover:text-red-600 transition" type="button">
 						<i class="fas fa-bell">
 						</i>
 					</button>
-
-					<!-- Mobile Search and buttons -->
-					<div class="w-full md:hidden hidden mt-4 space-y-4" id="mobile-menu">
-						<div class="relative w-full">
-							<input aria-label="Pesquisar filmes"
-								class="rounded bg-gray-900 px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-red-600"
-								id="mobile-search-input" placeholder="Pesquisar" type="search" />
-							<button class="absolute right-2 top-2 text-gray-400 hover:text-red-600 transition"
-								id="mobile-search-btn" type="button">
-								<i class="fas fa-search">
-								</i>
-							</button>
-						</div>
-						<div class="flex space-x-6 font-semibold text-sm justify-center">
-							<button class="hover:text-red-600 transition" type="button" id="mobile-request-movie-btn">
-								Solicitar Filme
-							</button>
-							<button class="hover:text-red-600 transition" type="button">
-								<i class="fas fa-bell">
-								</i>
-							</button>
-
-						</div>
+				</div>
 	</nav>
 	<!-- Hero Section -->
 	<header class="relative mt-16 w-full max-h-[400px] overflow-hidden md:max-h-[600px]">
@@ -532,12 +450,12 @@
 			<input type="text" name="name" placeholder="Seu nome" required>
 			<input type="email" name="email" placeholder="Seu email" required>
 			<textarea name="message"
-				placeholder="Solicite algo e em até 48h será incluído; sua sugestão será enviada diretamente ao CEO para inclusão no catálogo."
+				placeholder="Solicite um filme no catálogo, será disponibilizado em até 48h e será alertado em seu email quando disponível."
 				required></textarea>
 			<button type="submit">Solicitar filme</button>
 
 			<input type="hidden" name="_captcha" value="false">
-			<input type="hidden" name="_next" value="https://soupobre.vercel.app/">
+			<input type="hidden" name="_next" value="https://soupobre.vercel.app/obrigado.html">
 		</form>
 	</footer>
 
