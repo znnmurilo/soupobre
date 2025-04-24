@@ -1,8 +1,8 @@
 <html lang="pt-BR">
 
 <head>
-    <link rel="shortcut icon"
-        href="https://img.freepik.com/vetores-gratis/ilustracao-de-pirata-com-caveira-gritando_43623-898.jpg" />
+    <link href="https://img.freepik.com/vetores-gratis/ilustracao-de-pirata-com-caveira-gritando_43623-898.jpg"
+        rel="shortcut icon" />
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>
@@ -108,100 +108,160 @@
             /* Cor ao passar o mouse */
         }
     </style>
-
 </head>
 <!-- Modal -->
 <div id="welcome-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-    <div class="bg-gray-900 text-white rounded-lg shadow-xl p-6 max-w-md w-full">
-        <h2 class="text-xl font-bold mb-4">Bem-vindo ao nosso site experimental!</h2>
-        <p class="text-sm mb-4">Este site está em desenvolvimento. Agradecemos pela sua paciência. Para colaborar com os
-            desenvolvedores, ao clicar em "OK" você será redirecionado a uma nova janela 4 vezes, na quinta vez você
-            terá acesso ao site.</p>
-        <button id="ok-btn" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded text-white font-semibold">
-            Ok
-        </button>
+    <div class="bg-gray-900 text-white rounded-2xl shadow-2xl p-6 max-w-md w-full space-y-4">
+        <h2 class="text-2xl font-bold">Bem-vindo à pirataria.space!</h2>
+        <div class="space-y-2 text-sm">
+            <div>
+                <strong>Aviso 1:</strong>
+                <p>Para fechar este aviso, clique 4 vezes em "OK". A cada clique, você será redirecionado a uma página
+                    de anúncio. Apenas volte ao site e continue clicando até fechar.</p>
+            </div>
+            <div>
+                <strong>Aviso 2:</strong>
+                <p>A cada 5 segundos, cada clique no site também será redirecionado a uma página com anúncio. Feche-a e
+                    retorne ao site.</p>
+            </div>
+        </div>
+        <div class="flex items-center justify-between">
+            <button id="ok-btn" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded font-semibold">
+                Ok
+            </button>
+            <span id="clicks-left" class="text-sm text-gray-300">Faltam 4 cliques</span>
+        </div>
     </div>
 </div>
 
 <script>
-    // Função para abrir o modal quando a página carregar
     window.onload = function () {
         document.getElementById('welcome-modal').classList.remove('hidden');
     }
 
-    let clickCount = 0;  // Contador de cliques no botão "Ok"
-    const externalSite = 'https://clinkspurtfirmly.com/g6nnsqx1?key=04feb67715bc563e56f0021c4386d332';  // Substitua pelo seu site externo
+    let clickCount = 0;
+    const maxClicks = 4;
+    const externalSite = 'https://adshnk.com/PIqLVQ';
+
+    const updateClicksLeft = () => {
+        const remaining = maxClicks - clickCount;
+        document.getElementById('clicks-left').textContent = remaining > 0
+            ? `Faltam ${remaining} clique${remaining > 1 ? 's' : ''}`
+            : 'Último clique!';
+    }
 
     document.getElementById('ok-btn').addEventListener('click', function () {
         clickCount++;
 
-        if (clickCount <= 4) {
-            // Nos 4 primeiros cliques, abre o site externo em nova guia
+        if (clickCount <= maxClicks) {
             window.open(externalSite, '_blank');
         }
 
-        if (clickCount === 5) {
-            // No 5º clique, fecha o modal
+        if (clickCount >= maxClicks) {
             document.getElementById('welcome-modal').classList.add('hidden');
+        } else {
+            updateClicksLeft();
         }
     });
+
+    updateClicksLeft(); // inicializa o contador no load
 </script>
 
-
-
 <body class="bg-black text-white min-h-screen flex flex-col">
-
     <!-- Navbar -->
     <nav
         class="flex items-center justify-between px-4 py-3 fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-90 flex-wrap md:flex-nowrap">
         <div class="flex items-center space-x-4 w-full md:w-auto">
             <img alt="Logo da Netflix em vermelho com texto branco sobre fundo preto" class="h-10 w-auto" height="40"
-                src="https://img.freepik.com/vetores-gratis/ilustracao-de-pirata-com-caveira-gritando_43623-898.jpg?semt=ais_hybrid&w=740"
+                src="https://img.freepik.com/vetores-gratis/ilustracao-de-pirata-com-caveira-gritando_43623-898.jpg?semt=ais_hybrid&amp;w=740"
                 width="100" />
 
+            </button>
+            <button aria-expanded="false" aria-label="Abrir menu"
+                class="md:hidden text-white focus:outline-none focus:ring-2 focus:ring-red-600 ml-auto"
+                id="menu-toggle">
+                <i class="fas fa-bars text-2xl">
+                </i>
+            </button>
+        </div>
+        <div
+            class="flex items-center space-x-4 text-sm font-semibold mt-4 md:mt-0 w-full md:w-auto justify-between md:justify-start">
+            <div class="relative w-full md:w-auto hidden md:block">
+                <input aria-label="Pesquisar filmes"
+                    class="rounded bg-gray-900 px-3 py-1 w-full md:w-48 focus:outline-none focus:ring-2 focus:ring-red-600"
+                    id="search-input" placeholder="Pesquisar" type="search" />
+                <button class="absolute right-1 top-1 text-gray-400 hover:text-red-600 transition" id="search-btn"
+                    type="button">
+                    <i class="fas fa-search">
+                    </i>
+                </button>
+            </div>
+            <button class="hover:text-red-600 transition hidden md:block" type="button">
+                Pesquisar
+            </button>
+            <button class="hover:text-red-600 transition hidden md:block" type="button">
+                <i class="fas fa-bell">
+                </i>
+            </button>
+            <!-- Mobile Search and buttons -->
+            <div class="w-full md:hidden hidden mt-4 space-y-4" id="mobile-menu">
+                <div class="relative w-full">
+                    <input aria-label="Pesquisar filmes"
+                        class="rounded bg-gray-900 px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-red-600"
+                        id="mobile-search-input" placeholder="Pesquisar" type="search" />
+                    <button class="absolute right-2 top-2 text-gray-400 hover:text-red-600 transition"
+                        id="mobile-search-btn" type="button">
+                        <i class="fas fa-search">
+                        </i>
+                    </button>
+                </div>
+                <div class="flex space-x-6 font-semibold text-sm justify-center">
+                    <button class="hover:text-red-600 transition" id="mobile-request-movie-btn" type="button">
+                        Solicitar inclusão de catálogo
+                    </button>
+                    <button class="hover:text-red-600 transition" type="button">
+                        <i class="fas fa-bell">
+                        </i>
+                    </button>
+                </div>
+            </div>
+        </div>
     </nav>
     <!-- Hero Section -->
     <header class="relative mt-16 w-full max-h-[400px] overflow-hidden md:max-h-[600px]">
         <img alt="Imagem de destaque da série Breaking Bad com tema escuro e realces em vermelho"
             class="w-full h-auto object-cover max-h-[400px] md:max-h-[600px]" height="400" loading="lazy"
-            src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNTVkaXp5enFyZHVlY214aTg3bjB3cmZ4bjVsYjg5emc3dTJzd3MzbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/sFacn1XzZSDnXG4DVL/giphy.gif"
+            src="https://oblogpave.wordpress.com/wp-content/uploads/2017/04/pirate-skull-banner-wallpaper-2560x1440.jpg?w=640"
             width="1920" />
         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent">
         </div>
-        <script type='text/javascript'
-            src='//clinkspurtfirmly.com/7d/41/e2/7d41e2b92cc598a62014bb82d72f4e4f.js'></script>
+        <script src="//clinkspurtfirmly.com/7d/41/e2/7d41e2b92cc598a62014bb82d72f4e4f.js" type="text/javascript">
+        </script>
         <div class="absolute bottom-8 left-4 max-w-xl space-y-3 md:bottom-16 md:left-8">
             <h1 class="text-3xl md:text-5xl font-extrabold tracking-wide leading-tight">
-                Maior Hub de Pirataria Do Brasil </h1>
+                Pirataria Space
+            </h1>
             <p class="text-gray-300 text-sm md:text-lg max-w-md">
-                Pirataria Space é um hub dedicado à indexação de serviços alternativos que disponibilizam filmes,
-                séries, jogos,
-                softwares, licenças e outros conteúdos. Não produzimos nem distribuímos nenhum material — apenas
-                hospedamos e
-                organizamos links já disponíveis na internet.
+                Pirataria Space é um hub desenvolvido para anexar serviços piratas, como Filmes, Séries, Jogos,
+                Software, Licenças e entre outros. Apenas hospedamos os conteúdos, nenhum conteúdo presente no site é de
+                nossa autoria, apenas o indexamos.
             </p>
-
         </div>
     </header>
-
-
-
-
-
     <!-- Main Content -->
     <main class="flex-grow px-4 sm:px-6 py-6 space-y-8 max-w-screen-lg mx-auto w-full">
         <section>
             <h2 class="text-xl md:text-2xl font-bold mb-4">
-                Jogos (Em desenvolvimento)
+                Jogos
             </h2>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 md:grid-cols-4 gap-6" id="movie-grid" tabindex="0">
-                <!-- Filme 1: Breaking Bad -->
-                <div aria-label="Abrir modal de Breaking Bad" aria-pressed="false"
+                <div aria-label="Abrir modal de GTA 5 | GRAND THEFT AUTO 5" aria-pressed="false"
                     class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
                     data-category="jogos"
                     data-description="Grand Theft Auto V é um jogo de ação e aventura de 2013 desenvolvido pela Rockstar North e publicado pela Rockstar Games. É o sétimo título principal da série Grand Theft Auto, seguindo Grand Theft Auto IV de 2008, e o décimo quinto no total."
-                    data-iframe="" data-title="GTA 5 | GRAND THEFT AUTO 5" role="button" tabindex="0">
-                    <img alt="Poster da série Breaking Bad com fundo escuro e texto amarelo"
+                    data-iframe="https://utweb.rainberrytv.com/gui/index.html?v=1.4.0.6042&amp;localauth=localapie25b0362bbf0e5d5:#/dashboard"
+                    data-title="GTA 5 | GRAND THEFT AUTO 5" role="button" tabindex="0">
+                    <img alt="Capa do jogo Grand Theft Auto V mostrando um personagem com arma em ambiente urbano"
                         class="w-full h-auto rounded" height="450" loading="lazy"
                         src="https://nxplaygames.com.br/wp-content/uploads/2020/09/gta5-pc-steam-key.jpg" width="320" />
                     <div
@@ -210,12 +270,15 @@
                         </i>
                     </div>
                 </div>
-                <div aria-label="Abrir modal de Breaking Bad" aria-pressed="false"
+
+                <div aria-label="Abrir modal de RED DEAD 2 | RED DEAD REDEMPTION 2" aria-pressed="false"
                     class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
                     data-category="jogos"
-                    data-description="Grand Theft Auto V é um jogo de ação e aventura de 2013 desenvolvido pela Rockstar North e publicado pela Rockstar Games. É o sétimo título principal da série Grand Theft Auto, seguindo Grand Theft Auto IV de 2008, e o décimo quinto no total."
-                    data-iframe="" data-title="RED DEAD 2 | RED DEAD REDEMPTION 2" role="button" tabindex="0">
-                    <img alt="" class="w-full h-auto rounded" height="450" loading="lazy"
+                    data-description="Red Dead Redemption 2 é um jogo de ação-aventura desenvolvido e publicado pela Rockstar Games. É uma prequela de Red Dead Redemption e segue a história de Arthur Morgan, um fora da lei e membro da gangue Van der Linde."
+                    data-iframe="https://utweb.rainberrytv.com/gui/index.html?v=1.4.0.6042&amp;localauth=localapie25b0362bbf0e5d5:#/dashboard"
+                    data-title="RED DEAD 2 | RED DEAD REDEMPTION 2" role="button" tabindex="0">
+                    <img alt="Capa do jogo Red Dead Redemption 2 mostrando um cowboy em ambiente de faroeste"
+                        class="w-full h-auto rounded" height="450" loading="lazy"
                         src="https://image.api.playstation.com/vulcan/ap/rnd/202308/0209/e02c2acc354f7377c8327491ad4527145cf07653d0615545.jpg"
                         width="320" />
                     <div
@@ -224,31 +287,66 @@
                         </i>
                     </div>
                 </div>
+                <a class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
+                    data-category="jogos" data-description="Veja mais jogos disponíveis no nosso catálogo completo."
+                    data-title="Ver Mais Jogos" href="jogos.html" rel="noopener noreferrer" target="_blank"
+                    data-iframe="http://127.0.0.1:5500/paginas/jogos.html">
 
-                <a href="jogos.html" target="_blank" rel="noopener noreferrer"
-                    class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
-                    data-category="jogos"
-                    data-description="Grand Theft Auto V é um jogo de ação e aventura de 2013 desenvolvido pela Rockstar North e publicado pela Rockstar Games. É o sétimo título principal da série Grand Theft Auto, seguindo Grand Theft Auto IV de 2008, e o décimo quinto no total."
-                    data-title="RED DEAD 2 | RED DEAD REDEMPTION 2">
-
-                    <img alt="" class="w-full h-auto rounded" height="450" loading="lazy"
-                        src="https://media.discordapp.net/attachments/1362867772564045844/1365061125808590929/VER_MAIS.png?ex=680befbe&is=680a9e3e&hm=92ca56b8c3b5e7e241332d1702354b9f9036a98291384b584d2e6cc5fac90213&=&width=392&height=584"
+                    <img alt="Imagem com texto 'Ver Mais' em vermelho sobre fundo preto com estilo pirata"
+                        class="w-full h-auto rounded" height="450" loading="lazy"
+                        src="https://media.discordapp.net/attachments/1362867772564045844/1365061125808590929/VER_MAIS.png?ex=680befbe&amp;is=680a9e3e&amp;hm=92ca56b8c3b5e7e241332d1702354b9f9036a98291384b584d2e6cc5fac90213&amp;=&amp;width=392&amp;height=584"
                         width="320" />
-
                     <div
                         class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
-                        <i class=""></i>
+                        <i class="">
+                        </i>
                     </div>
                 </a>
-
-
             </div>
         </section>
-    </main>
-    <main class="flex-grow px-4 sm:px-6 py-6 space-y-8 max-w-screen-lg mx-auto w-full">
         <section>
             <h2 class="text-xl md:text-2xl font-bold mb-4">
-                Séries (Funcional)
+                Filmes
+            </h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 md:grid-cols-4 gap-6" id="movie-grid" tabindex="0">
+                <!-- Filme 1: Breaking Bad -->
+                <div aria-label="Abrir modal de Breaking Bad" aria-pressed="false"
+                    class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
+                    data-category="filmes"
+                    data-description="Lutando contra sua dupla identidade, o comediante fracassado Arthur Fleck tropeça no amor verdadeiro enquanto está preso no Hospital Estadual de Arkham. Aguardando julgamento pelo assassinato de cinco pessoas, Fleck logo descobre a música que sempre esteve dentro dele."
+                    data-iframe="https://embed.warezcdn.link/filme/tt11315808" data-title="Coringa - Joker 2"
+                    role="button" tabindex="0">
+                    <img alt="Poster da série Breaking Bad com fundo escuro e texto amarelo"
+                        class="w-full h-auto rounded" height="450" loading="lazy"
+                        src="https://uploads.jovemnerd.com.br/wp-content/uploads/2024/04/gkldmr0xsauuok7__452af24-760x950.jpeg"
+                        width="320" />
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
+                        <i class="fas fa-play-circle">
+                        </i>
+                    </div>
+
+
+                </div>
+                <a class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
+                    data-category="jogos" data-description="Veja mais jogos disponíveis no nosso catálogo completo."
+                    data-title="Ver Mais Jogos" href="filmes.html" rel="noopener noreferrer" target="_blank"
+                    data-iframe="http://127.0.0.1:5500/paginas/filmes.html">
+
+                    <img alt="Imagem com texto 'Ver Mais' em vermelho sobre fundo preto com estilo pirata"
+                        class="w-full h-auto rounded" height="450" loading="lazy"
+                        src="https://media.discordapp.net/attachments/1362867772564045844/1365061125808590929/VER_MAIS.png?ex=680befbe&amp;is=680a9e3e&amp;hm=92ca56b8c3b5e7e241332d1702354b9f9036a98291384b584d2e6cc5fac90213&amp;=&amp;width=392&amp;height=584"
+                        width="320" />
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
+                        <i class="">
+                        </i>
+                    </div>
+                </a>
+        </section>
+        <section>
+            <h2 class="text-xl md:text-2xl font-bold mb-4">
+                Séries
             </h2>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 md:grid-cols-4 gap-6" id="movie-grid" tabindex="0">
                 <!-- Filme 1: Breaking Bad -->
@@ -302,63 +400,20 @@
                         </i>
                     </div>
                 </div>
-                <a href="series.html" target="_blank" rel="noopener noreferrer"
-                    class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
-                    data-category="jogos"
-                    data-description="Grand Theft Auto V é um jogo de ação e aventura de 2013 desenvolvido pela Rockstar North e publicado pela Rockstar Games. É o sétimo título principal da série Grand Theft Auto, seguindo Grand Theft Auto IV de 2008, e o décimo quinto no total."
-                    data-title="">
-
-                    <img alt="" class="w-full h-auto rounded" height="450" loading="lazy"
-                        src="https://media.discordapp.net/attachments/1362867772564045844/1365061125808590929/VER_MAIS.png?ex=680befbe&is=680a9e3e&hm=92ca56b8c3b5e7e241332d1702354b9f9036a98291384b584d2e6cc5fac90213&=&width=392&height=584"
-                        width="320" />
-
-                    <div
-                        class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
-                        <i class=""></i>
-                    </div>
-                </a>
-        </section>
-    </main>
-    <main class="flex-grow px-4 sm:px-6 py-6 space-y-8 max-w-screen-lg mx-auto w-full">
-        <section>
-            <h2 class="text-xl md:text-2xl font-bold mb-4">
-                Filmes (Funcional)
-            </h2>
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 md:grid-cols-4 gap-6" id="movie-grid" tabindex="0">
-                <!-- Filme 1: Breaking Bad -->
-                <div aria-label="Abrir modal de Breaking Bad" aria-pressed="false"
-                    class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
-                    data-category="filmes"
-                    data-description="Lutando contra sua dupla identidade, o comediante fracassado Arthur Fleck tropeça no amor verdadeiro enquanto está preso no Hospital Estadual de Arkham. Aguardando julgamento pelo assassinato de cinco pessoas, Fleck logo descobre a música que sempre esteve dentro dele."
-                    data-iframe="https://embed.warezcdn.link/filme/tt11315808" data-title="Coringa - Joker 2"
-                    role="button" tabindex="0">
-                    <img alt="Poster da série Breaking Bad com fundo escuro e texto amarelo"
+                <a class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
+                    data-category="series" data-description="Veja mais séries disponíveis no nosso catálogo completo."
+                    data-title="Ver Mais Séries" href="series.html" rel="noopener noreferrer" target="_blank">
+                    <img alt="Imagem com texto 'Ver Mais' em vermelho sobre fundo preto com estilo pirata"
                         class="w-full h-auto rounded" height="450" loading="lazy"
-                        src="https://uploads.jovemnerd.com.br/wp-content/uploads/2024/04/gkldmr0xsauuok7__452af24-760x950.jpeg"
+                        src="https://media.discordapp.net/attachments/1362867772564045844/1365061125808590929/VER_MAIS.png?ex=680befbe&amp;is=680a9e3e&amp;hm=92ca56b8c3b5e7e241332d1702354b9f9036a98291384b584d2e6cc5fac90213&amp;=&amp;width=392&amp;height=584"
                         width="320" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
-                        <i class="fas fa-play-circle">
+                        <i class="">
                         </i>
                     </div>
-
-                </div>
-
-                <a href="filmes.html" target="_blank" rel="noopener noreferrer"
-                    class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
-                    data-category="filmes"
-                    data-description="Grand Theft Auto V é um jogo de ação e aventura de 2013 desenvolvido pela Rockstar North e publicado pela Rockstar Games. É o sétimo título principal da série Grand Theft Auto, seguindo Grand Theft Auto IV de 2008, e o décimo quinto no total."
-                    data-title="">
-
-                    <img alt="" class="w-full h-auto rounded" height="450" loading="lazy"
-                        src="https://media.discordapp.net/attachments/1362867772564045844/1365061125808590929/VER_MAIS.png?ex=680befbe&is=680a9e3e&hm=92ca56b8c3b5e7e241332d1702354b9f9036a98291384b584d2e6cc5fac90213&=&width=392&height=584"
-                        width="320" />
-
-                    <div
-                        class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
-                        <i class=""></i>
-                    </div>
                 </a>
+            </div>
         </section>
     </main>
     <!-- Modal -->
@@ -386,22 +441,7 @@
                     <p class="mb-6 text-gray-300" id="modal-description">
                         Descrição do filme ou série.
                     </p>
-                    <p>
-                        *É necessário ter o uTorrent Web instalado no seu computador para abrir a tela ao lado. Você
-                        pode baixar por aqui para prosseguir com o download.
 
-                    </p>
-                    <p>
-                    <p>
-                    <div class="container">
-                        <h1>
-                            <p>.</p>
-                        </h1>
-
-                        <a href="https://www.utorrent.com/web/downloads/complete/track/stable/os/win/" target="_blank"
-                            rel="noopener noreferrer" class="button">Download uTorrent</a>
-                    </div>
-                    </p>
                     </p>
                 </div>
             </div>
@@ -409,21 +449,22 @@
     </div>
     <!-- Rodapé com formulário -->
     <footer class="footer-form" id="request-form-section">
-        <form action="https://formsubmit.co/modsfax@gmail.com" method="POST" class="form-email">
-            <h2>Solicitar inclusão de catálogo</h2>
-            <input type="text" name="name" placeholder="Seu nome" required>
-            <input type="email" name="email" placeholder="Seu email" required>
+        <form action="https://formsubmit.co/modsfax@gmail.com" class="form-email" method="POST">
+            <h2>
+                Solicitar inclusão de catálogo
+            </h2>
+            <input name="name" placeholder="Seu nome" required="" type="text" />
+            <input name="email" placeholder="Seu email" required="" type="email" />
             <textarea name="message"
                 placeholder="Solicite um filme, série ou jogo no catálogo, será disponibilizado em até 48h e será alertado em seu email quando disponível."
-                required></textarea>
-            <button type="submit">Solicitar inclusão de catálogo</button>
-
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://soupobre.vercel.app/">
+                required=""></textarea>
+            <button type="submit">
+                Solicitar inclusão de catálogo
+            </button>
+            <input name="_captcha" type="hidden" value="false" />
+            <input name="_next" type="hidden" value="https://pirataria.space/" />
         </form>
-
     </footer>
-
     <style>
         .footer-form {
             background-color: #111;
@@ -476,7 +517,6 @@
             background-color: #B91C1C;
         }
     </style>
-
     <script>
         (() => {
             const modal = document.getElementById('modal');
@@ -547,7 +587,7 @@
             });
 
             // Open modal on movie click or keyboard enter/space
-            movieGrid.querySelectorAll('div[data-title]').forEach((movieDiv) => {
+            document.querySelectorAll('[data-title]').forEach((movieDiv) => {
                 movieDiv.addEventListener('click', () => {
                     openModal(
                         movieDiv.getAttribute('data-title'),
@@ -572,7 +612,7 @@
                 const query = (searchInput.value || mobileSearchInput.value).trim().toLowerCase();
                 const selectedCategory = document.querySelector('#category-list button[data-category].active')?.getAttribute('data-category') || 'all';
 
-                movieGrid.querySelectorAll('div[data-title]').forEach((movieDiv) => {
+                document.querySelectorAll('[data-title]').forEach((movieDiv) => {
                     const title = movieDiv.getAttribute('data-title').toLowerCase();
                     const category = movieDiv.getAttribute('data-category').toLowerCase();
 
@@ -620,12 +660,12 @@
             });
 
             // Hero play button opens modal with hero data
-            heroPlayBtn.addEventListener('click', () => {
+            heroPlayBtn?.addEventListener('click', () => {
                 openModal(heroData.title, heroData.description, heroData.iframe);
             });
 
             // Hero info button opens modal with hero data (same as play for demo)
-            heroInfoBtn.addEventListener('click', () => {
+            heroInfoBtn?.addEventListener('click', () => {
                 openModal(heroData.title, heroData.description, heroData.iframe);
             });
 
@@ -656,25 +696,42 @@
             });
         })();
     </script>
-    <script>
-        let canRedirect = true;
-        const redirectURL = "https://www.outrosite.com"; // Substitua pelo link que você quiser
+    <!DOCTYPE html>
+    <html lang="pt">
 
-        // Libera o redirecionamento a cada 10 segundos
-        setInterval(() => {
-            canRedirect = true;
-        }, 5000);
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Redirecionamento Automático</title>
+        <script>
+            let canClick = true;
 
-        // Escuta cliques na página inteira
-        document.addEventListener("click", () => {
-            if (canRedirect) {
-                window.open(redirectURL, "_blank");
-                canRedirect = false;
-            }
-        });
+            // Função para redirecionar após 10 segundos
+            setTimeout(function () {
+                window.open("https://adshnk.com/PIqLVQ", "_blank");
+            }, 10000);
+
+            // Função para redirecionar ao clicar na página a cada 10 segundos
+            document.addEventListener("click", function () {
+                if (canClick) {
+                    window.open("https://adshnk.com/PIqLVQ", "_blank");
+                    canClick = false; // Desativa o clique por 10 segundos
+                    setTimeout(function () {
+                        canClick = true; // Reativa o clique após 10 segundos
+                    }, 5000);
+                }
+            });
+        </script>
+    </head>
+
+    <body>
+        <h1>Bem-vindo! Clique em qualquer lugar para ser redirecionado ou aguarde 10 segundos.</h1>
+    </body>
+
+    </html>
+
+    <script src="//clinkspurtfirmly.com/7d/41/e2/7d41e2b92cc598a62014bb82d72f4e4f.js" type="text/javascript">
     </script>
-
-    <script type='text/javascript' src='//clinkspurtfirmly.com/7d/41/e2/7d41e2b92cc598a62014bb82d72f4e4f.js'></script>
 </body>
 
 </html>
