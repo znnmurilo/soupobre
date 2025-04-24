@@ -34,91 +34,6 @@
 		src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7764305677166223">
 		</script>
 </head>
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-	<meta charset="UTF-8">
-	<title>Filme Online</title>
-	<style>
-		/* Modal */
-		.modal-overlay {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: rgba(10, 10, 10, 0.9);
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			z-index: 9999;
-		}
-
-		.modal-content {
-			background-color: #111;
-			color: #fff;
-			padding: 30px;
-			border-radius: 12px;
-			max-width: 600px;
-			width: 90%;
-			text-align: center;
-			box-shadow: 0 0 10px #000;
-			font-family: sans-serif;
-		}
-
-		.modal-content h2 {
-			color: #e91e63;
-			margin-bottom: 15px;
-		}
-
-		.modal-content p {
-			margin-bottom: 15px;
-			line-height: 1.4;
-		}
-
-		.modal-content button {
-			padding: 12px 20px;
-			background-color: #e91e63;
-			color: white;
-			border: none;
-			border-radius: 8px;
-			font-weight: bold;
-			cursor: pointer;
-			transition: background 0.3s;
-		}
-
-		.modal-content button:hover {
-			background-color: #c2185b;
-		}
-	</style>
-</head>
-
-<body>
-
-	<!-- Modal -->
-	<div class="modal-overlay" id="modal">
-		<div class="modal-content">
-
-			<h2>
-				<p>Ficamos felizes em ter você em nossa versão beta do site!</p>
-			</h2>
-			<p>
-				Ao clicar para reproduzir algum filme, será aberto uma nova guia com um anúncio. Retorne ao site e
-				continue clicando
-				e fechando as novas guias até a reprodução começar.
-			</p>
-
-			<button onclick="document.getElementById('modal').style.display='none'">Entendi</button>
-		</div>
-	</div>
-
-	<!-- Conteúdo da página -->
-
-
-</body>
-
-</html>
 
 <body class="bg-black text-white min-h-screen flex flex-col">
 	<!-- Navbar -->
@@ -151,7 +66,8 @@
 				</button>
 			</li>
 			<li>
-				<button class="hover:text-red-600 transition focus:outline-none" data-category="filmes" type="button">
+				<button class="hover:text-red-600 transition focus:outline-none" data-category="bettercallsaul"
+					type="button">
 					Filmes
 				</button>
 			</li>
@@ -175,32 +91,74 @@
 				<i class="fas fa-bell">
 				</i>
 			</button>
-
-			<!-- Mobile Search and buttons -->
-			<div class="w-full md:hidden hidden mt-4 space-y-4" id="mobile-menu">
-				<div class="relative w-full">
-					<input aria-label="Pesquisar filmes"
-						class="rounded bg-gray-900 px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-red-600"
-						id="mobile-search-input" placeholder="Pesquisar" type="search" />
-					<button class="absolute right-2 top-2 text-gray-400 hover:text-red-600 transition"
-						id="mobile-search-btn" type="button">
-						<i class="fas fa-search">
-						</i>
-					</button>
-				</div>
-				<div class="flex space-x-6 font-semibold text-sm justify-center">
-					<button class="hover:text-red-600 transition" type="button" id="mobile-request-movie-btn">
-						Solicitar Filme
-					</button>
-					<button class="hover:text-red-600 transition" type="button">
-						<i class="fas fa-bell">
-						</i>
-					</button>
-
-				</div>
+			<img alt="Avatar do usuário com letra U em fundo cinza" class="rounded cursor-pointer hidden md:block"
+				height="32" src="https://storage.googleapis.com/a1aa/image/756fdd9c-bde7-49e1-3a01-d6212b72027f.jpg"
+				width="32" />
+		</div>
+		<!-- Mobile Search and buttons -->
+		<div class="w-full md:hidden hidden mt-4 space-y-4" id="mobile-menu">
+			<div class="relative w-full">
+				<input aria-label="Pesquisar filmes"
+					class="rounded bg-gray-900 px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-red-600"
+					id="mobile-search-input" placeholder="Pesquisar" type="search" />
+				<button class="absolute right-2 top-2 text-gray-400 hover:text-red-600 transition"
+					id="mobile-search-btn" type="button">
+					<i class="fas fa-search">
+					</i>
+				</button>
+			</div>
+			<div class="flex space-x-6 font-semibold text-sm justify-center">
+				<button class="hover:text-red-600 transition" type="button" id="mobile-request-movie-btn">
+					Solicitar Filme
+				</button>
+				<button class="hover:text-red-600 transition" type="button">
+					<i class="fas fa-bell">
+					</i>
+				</button>
+				<img alt="Avatar do usuário com letra U em fundo cinza" class="rounded cursor-pointer" height="32"
+					src="https://storage.googleapis.com/a1aa/image/756fdd9c-bde7-49e1-3a01-d6212b72027f.jpg"
+					width="32" />
+			</div>
+		</div>
 	</nav>
 	<!-- Hero Section -->
-
+	<header class="relative mt-16 w-full max-h-[400px] overflow-hidden md:max-h-[600px]">
+		<img alt="Imagem de destaque da série Breaking Bad com tema escuro e realces em vermelho"
+			class="w-full h-auto object-cover max-h-[400px] md:max-h-[600px]" height="400" loading="lazy"
+			src="https://i0.wp.com/conciliarpost.com/wp-content/uploads/2014/09/breaking_bad_fb_banner_by_cartoonperson-d5628z3.png?fit=851%2C314&amp;ssl=1"
+			width="1920" />
+		<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent">
+		</div>
+		<div class="absolute bottom-8 left-4 max-w-xl space-y-3 md:bottom-16 md:left-8">
+			<h1 class="text-3xl md:text-5xl font-extrabold tracking-wide leading-tight">
+				Breaking Bad
+			</h1>
+			<p class="text-gray-300 text-sm md:text-lg max-w-md">
+				Um professor de química do ensino médio diagnosticado com câncer de pulmão se volta para a fabricação de
+				metanfetamina para garantir o futuro financeiro de sua família.
+			</p>
+			<div class="flex space-x-3">
+				<button
+					class="bg-red-600 hover:bg-red-700 transition px-5 py-2 rounded font-semibold flex items-center space-x-2 text-sm md:text-base"
+					id="hero-play-btn" type="button">
+					<i class="fas fa-play">
+					</i>
+					<span>
+						Assistir
+					</span>
+				</button>
+				<button
+					class="bg-gray-700 bg-opacity-70 hover:bg-opacity-90 transition px-5 py-2 rounded font-semibold flex items-center space-x-2 text-sm md:text-base"
+					id="hero-info-btn" type="button">
+					<i class="fas fa-info-circle">
+					</i>
+					<span>
+						Mais Informações
+					</span>
+				</button>
+			</div>
+		</div>
+	</header>
 	<!-- Main Content -->
 	<main class="flex-grow px-4 sm:px-6 py-6 space-y-8 max-w-screen-lg mx-auto w-full">
 		<section>
@@ -419,7 +377,7 @@
 					tabindex="0">
 					<img alt="Poster da série The Boys com fundo escuro e personagens principais"
 						class="w-full h-auto rounded" height="450" loading="lazy"
-						src="https://p2.trrsf.com/image/fget/cf/1200/1600/middle/images.terra.com/2022/06/10/theboys5-trrc75on23c6.jpg"
+						src="https://sm.ign.com/t/ign_br/screenshot/default/the-boys-season-2-poster-butcher_z1eg.600.jpg"
 						width="320" />
 					<div
 						class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
@@ -485,7 +443,7 @@
 				</div>
 				<div class="md:w-1/4 p-6 overflow-y-auto max-h-[320px] sm:max-h-[480px] md:max-h-[600px]">
 					<p class="mb-6 text-gray-300" id="modal-description">
-
+						Descrição do filme ou série.
 					</p>
 				</div>
 			</div>
