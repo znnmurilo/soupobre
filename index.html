@@ -4,12 +4,11 @@
 	<meta charset="utf-8" />
 	<meta content="width=device-width, initial-scale=1" name="viewport" />
 	<title>
-		Sou Pobre &amp; Melhor site de filmes e séries do
+		Sou Pobre & Melhor site de filmes e séries do
 	</title>
-	<script src="https://cdn.tailwindcss.com">
-	</script>
+	<script src="https://cdn.tailwindcss.com"></script>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 	<style>
 		body {
 			font-family: 'Montserrat', sans-serif;
@@ -36,48 +35,79 @@
 
 <body class="bg-black text-white min-h-screen flex flex-col">
 	<!-- Navbar -->
-	<nav class="flex items-center justify-between px-6 py-4 fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-90">
-		<div class="flex items-center space-x-6">
+	<nav
+		class="flex items-center justify-between px-4 sm:px-6 py-4 fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-90 flex-wrap md:flex-nowrap">
+		<div class="flex items-center space-x-4">
 			<img alt="Logo da Netflix em vermelho com texto branco sobre fundo preto" class="h-10 w-auto" height="40"
-				src="https://storage.googleapis.com/a1aa/image/b99f5e7f-3a6b-4a25-5d22-1b783849e613.jpg" width="100" />
-			<ul class="hidden md:flex space-x-6 font-semibold text-sm" id="category-list">
+				src="" width="100" />
+			<button id="menu-toggle" aria-label="Abrir menu" aria-expanded="false"
+				class="md:hidden text-white focus:outline-none focus:ring-2 focus:ring-red-600">
+				<i class="fas fa-bars text-2xl"></i>
+			</button>
+			<ul id="category-list"
+				class="hidden md:flex space-x-6 font-semibold text-sm flex-wrap md:flex-nowrap w-full md:w-auto">
 				<li>
-					<button class="hover:text-red-600 transition focus:outline-none" data-category="all">
+					<button class="hover:text-red-600 transition focus:outline-none" data-category="all" type="button">
 						Todos
 					</button>
 				</li>
 				<li>
-					<button class="hover:text-red-600 transition focus:outline-none" data-category="series">
+					<button class="hover:text-red-600 transition focus:outline-none" data-category="series"
+						type="button">
 						Series
 					</button>
 				</li>
 				<li>
-					<button class="hover:text-red-600 transition focus:outline-none" data-category="bettercallsaul">
+					<button class="hover:text-red-600 transition focus:outline-none" data-category="bettercallsaul"
+						type="button">
 						Filmes
 					</button>
 				</li>
 			</ul>
 		</div>
-		<div class="flex items-center space-x-4 text-sm font-semibold">
-			<div class="relative hidden md:block">
+		<div
+			class="flex items-center space-x-4 text-sm font-semibold mt-4 md:mt-0 w-full md:w-auto justify-between md:justify-start">
+			<div class="relative w-full md:w-auto hidden md:block">
 				<input aria-label="Pesquisar filmes"
-					class="rounded bg-gray-900 px-3 py-1 w-48 focus:outline-none focus:ring-2 focus:ring-red-600"
+					class="rounded bg-gray-900 px-3 py-1 w-full md:w-48 focus:outline-none focus:ring-2 focus:ring-red-600"
 					id="search-input" placeholder="Pesquisar" type="search" />
 				<button class="absolute right-1 top-1 text-gray-400 hover:text-red-600 transition" id="search-btn"
 					type="button">
-					<i class="fas fa-search">
-					</i>
+					<i class="fas fa-search"></i>
 				</button>
 			</div>
-			<button class="hover:text-red-600 transition">
+			<button class="hover:text-red-600 transition hidden md:block" type="button">
 				Sou pobre
 			</button>
-			<button class="hover:text-red-600 transition">
-				<i class="fas fa-bell">
-				</i>
+			<button class="hover:text-red-600 transition hidden md:block" type="button">
+				<i class="fas fa-bell"></i>
 			</button>
-			<img alt="Avatar do usuário com letra U em fundo cinza" class="rounded cursor-pointer" height="32"
-				src="https://storage.googleapis.com/a1aa/image/756fdd9c-bde7-49e1-3a01-d6212b72027f.jpg" width="32" />
+			<img alt="Avatar do usuário com letra U em fundo cinza" class="rounded cursor-pointer hidden md:block"
+				height="32" src="https://storage.googleapis.com/a1aa/image/756fdd9c-bde7-49e1-3a01-d6212b72027f.jpg"
+				width="32" />
+		</div>
+		<!-- Mobile Search and buttons -->
+		<div id="mobile-menu" class="w-full md:hidden hidden mt-4 space-y-4">
+			<div class="relative w-full">
+				<input aria-label="Pesquisar filmes"
+					class="rounded bg-gray-900 px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-red-600"
+					id="mobile-search-input" placeholder="Pesquisar" type="search" />
+				<button class="absolute right-2 top-2 text-gray-400 hover:text-red-600 transition"
+					id="mobile-search-btn" type="button">
+					<i class="fas fa-search"></i>
+				</button>
+			</div>
+			<div class="flex space-x-6 font-semibold text-sm justify-center">
+				<button class="hover:text-red-600 transition" type="button">
+					Sou pobre
+				</button>
+				<button class="hover:text-red-600 transition" type="button">
+					<i class="fas fa-bell"></i>
+				</button>
+				<img alt="Avatar do usuário com letra U em fundo cinza" class="rounded cursor-pointer" height="32"
+					src="https://storage.googleapis.com/a1aa/image/756fdd9c-bde7-49e1-3a01-d6212b72027f.jpg"
+					width="32" />
+			</div>
 		</div>
 	</nav>
 	<!-- Hero Section -->
@@ -86,8 +116,7 @@
 			class="w-full h-auto object-cover max-h-[600px]" height="600" loading="lazy"
 			src="https://i0.wp.com/conciliarpost.com/wp-content/uploads/2014/09/breaking_bad_fb_banner_by_cartoonperson-d5628z3.png?fit=851%2C314&ssl=1"
 			width="1920" />
-		<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent">
-		</div>
+		<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
 		<div class="absolute bottom-16 left-8 max-w-xl space-y-4">
 			<h1 class="text-5xl font-extrabold tracking-wide">
 				Breaking Bad
@@ -100,34 +129,29 @@
 				<button
 					class="bg-red-600 hover:bg-red-700 transition px-6 py-2 rounded font-semibold flex items-center space-x-2"
 					id="hero-play-btn" type="button">
-					<i class="fas fa-play">
-					</i>
-					<span>
-						Assistir
-					</span>
+					<i class="fas fa-play"></i>
+					<span>Assistir</span>
 				</button>
 				<button
 					class="bg-gray-700 bg-opacity-70 hover:bg-opacity-90 transition px-6 py-2 rounded font-semibold flex items-center space-x-2"
 					id="hero-info-btn" type="button">
-					<i class="fas fa-info-circle">
-					</i>
-					<span>
-						Mais Informações
-					</span>
+					<i class="fas fa-info-circle"></i>
+					<span>Mais Informações</span>
 				</button>
 			</div>
 		</div>
 	</header>
 	<!-- Main Content -->
-	<main class="flex-grow px-6 py-8 space-y-10">
+	<main class="flex-grow px-4 sm:px-6 py-8 space-y-10">
 		<section>
 			<h2 class="text-2xl font-bold mb-4">
 				Filmes e Séries
 			</h2>
-			<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6" id="movie-grid">
+			<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6" id="movie-grid" tabindex="0">
 				<!-- Filme 1: Breaking Bad -->
 				<div aria-label="Abrir modal de Breaking Bad" aria-pressed="false"
-					class="cursor-pointer rounded overflow-hidden relative group" data-category="series"
+					class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
+					data-category="series"
 					data-description="Um professor de química do ensino médio diagnosticado com câncer de pulmão se volta para a fabricação de metanfetamina para garantir o futuro financeiro de sua família."
 					data-iframe="https://embed.warezcdn.link/serie/tt0903747" data-title="Breaking Bad" role="button"
 					tabindex="0">
@@ -137,13 +161,13 @@
 						width="320" />
 					<div
 						class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
-						<i class="fas fa-play-circle">
-						</i>
+						<i class="fas fa-play-circle"></i>
 					</div>
 				</div>
 				<!-- Filme 2: Better Call Saul -->
 				<div aria-label="Abrir modal de Better Call Saul" aria-pressed="false"
-					class="cursor-pointer rounded overflow-hidden relative group" data-category="series"
+					class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
+					data-category="series"
 					data-description="Acompanhe a transformação de Jimmy McGill, um advogado de defesa de baixo nível, no inescrupuloso Saul Goodman, advogado de criminosos."
 					data-iframe="https://embed.warezcdn.link/serie/tt0903747" data-title="Better Call Saul"
 					role="button" tabindex="0">
@@ -153,23 +177,215 @@
 						width="320" />
 					<div
 						class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
-						<i class="fas fa-play-circle">
-						</i>
+						<i class="fas fa-play-circle"></i>
 					</div>
 				</div>
-				<div aria-label="Abrir modal de Better Call Saul" aria-pressed="false"
-					class="cursor-pointer rounded overflow-hidden relative group" data-category="series"
+				<!-- Filme 3: Narcos -->
+				<div aria-label="Abrir modal de Narcos" aria-pressed="false"
+					class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
+					data-category="series"
 					data-description="Narcos é uma série original da Netflix que narra a ascensão e queda dos maiores cartéis de drogas da América Latina. As duas primeiras temporadas focam em Pablo Escobar e o Cartel de Medellín, mostrando seu poder, brutalidade e influência nos anos 1980. A terceira temporada acompanha a luta contra o Cartel de Cali, após a queda de Escobar. A trama mistura eventos reais com dramatização, destacando o trabalho da DEA (agência antidrogas dos EUA) e a complexa relação entre política, violência e tráfico de drogas."
 					data-iframe="https://embed.warezcdn.link/serie/tt2707408" data-title="Narcos" role="button"
 					tabindex="0">
-					<img alt="Poster da série Better Call Saul com fundo escuro e texto amarelo"
-						class="w-full h-auto rounded" height="450" loading="lazy"
+					<img alt="Poster da série Narcos com fundo escuro e texto amarelo" class="w-full h-auto rounded"
+						height="450" loading="lazy"
 						src="https://m.media-amazon.com/images/M/MV5BNzQwOTcwMzIwN15BMl5BanBnXkFtZTgwMjYxMTA0NjE@._V1_FMjpg_UX1000_.jpg"
 						width="320" />
 					<div
 						class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
-						<i class="fas fa-play-circle">
-						</i>
+						<i class="fas fa-play-circle"></i>
+					</div>
+				</div>
+				<!-- Filme 4: Stranger Things -->
+				<div aria-label="Abrir modal de Stranger Things" aria-pressed="false"
+					class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
+					data-category="series"
+					data-description="Stranger Things é uma série de ficção científica e terror que se passa nos anos 80, onde um grupo de crianças enfrenta eventos sobrenaturais e experimentos secretos do governo."
+					data-iframe="https://embed.warezcdn.link/serie/tt4574334" data-title="Stranger Things" role="button"
+					tabindex="0">
+					<img alt="Poster da série Stranger Things com fundo escuro e texto vermelho"
+						class="w-full h-auto rounded" height="450" loading="lazy"
+						src="https://m.media-amazon.com/images/M/MV5BMTc5NjYxNjYxNV5BMl5BanBnXkFtZTgwNjYxNjYxNjM@._V1_FMjpg_UX1000_.jpg"
+						width="320" />
+					<div
+						class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
+						<i class="fas fa-play-circle"></i>
+					</div>
+				</div>
+				<!-- Filme 5: The Witcher -->
+				<div aria-label="Abrir modal de The Witcher" aria-pressed="false"
+					class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
+					data-category="series"
+					data-description="The Witcher é uma série de fantasia baseada nos livros de Andrzej Sapkowski, que acompanha Geralt de Rívia, um caçador de monstros em um mundo cheio de magia e perigos."
+					data-iframe="https://embed.warezcdn.link/serie/tt5180504" data-title="The Witcher" role="button"
+					tabindex="0">
+					<img alt="Poster da série The Witcher com fundo escuro e texto branco" class="w-full h-auto rounded"
+						height="450" loading="lazy"
+						src="https://m.media-amazon.com/images/M/MV5BMTYxNjYxNjYxNV5BMl5BanBnXkFtZTgwNjYxNjYxNjM@._V1_FMjpg_UX1000_.jpg"
+						width="320" />
+					<div
+						class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
+						<i class="fas fa-play-circle"></i>
+					</div>
+				</div>
+				<!-- Filme 6: La Casa de Papel -->
+				<div aria-label="Abrir modal de La Casa de Papel" aria-pressed="false"
+					class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
+					data-category="series"
+					data-description="La Casa de Papel é uma série espanhola que acompanha um grupo de assaltantes que planeja o maior roubo da história na Casa da Moeda da Espanha."
+					data-iframe="https://embed.warezcdn.link/serie/tt6468322" data-title="La Casa de Papel"
+					role="button" tabindex="0">
+					<img alt="Poster da série La Casa de Papel com fundo vermelho e máscara de Dali"
+						class="w-full h-auto rounded" height="450" loading="lazy"
+						src="https://m.media-amazon.com/images/M/MV5BMTYxNjYxNjYxNV5BMl5BanBnXkFtZTgwNjYxNjYxNjM@._V1_FMjpg_UX1000_.jpg"
+						width="320" />
+					<div
+						class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
+						<i class="fas fa-play-circle"></i>
+					</div>
+				</div>
+				<!-- Filme 7: Game of Thrones -->
+				<div aria-label="Abrir modal de Game of Thrones" aria-pressed="false"
+					class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
+					data-category="series"
+					data-description="Game of Thrones é uma série épica de fantasia que narra a luta pelo poder entre famílias nobres em um continente fictício chamado Westeros."
+					data-iframe="https://embed.warezcdn.link/serie/tt0944947" data-title="Game of Thrones" role="button"
+					tabindex="0">
+					<img alt="Poster da série Game of Thrones com fundo escuro e texto branco"
+						class="w-full h-auto rounded" height="450" loading="lazy"
+						src="https://m.media-amazon.com/images/M/MV5BMTYxNjYxNjYxNV5BMl5BanBnXkFtZTgwNjYxNjYxNjM@._V1_FMjpg_UX1000_.jpg"
+						width="320" />
+					<div
+						class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
+						<i class="fas fa-play-circle"></i>
+					</div>
+				</div>
+				<!-- Filme 8: The Mandalorian -->
+				<div aria-label="Abrir modal de The Mandalorian" aria-pressed="false"
+					class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
+					data-category="series"
+					data-description="The Mandalorian é uma série de Star Wars que acompanha um caçador de recompensas solitário em suas aventuras pela galáxia."
+					data-iframe="https://embed.warezcdn.link/serie/tt8111088" data-title="The Mandalorian" role="button"
+					tabindex="0">
+					<img alt="Poster da série The Mandalorian com fundo escuro e personagem com armadura"
+						class="w-full h-auto rounded" height="450" loading="lazy"
+						src="https://m.media-amazon.com/images/M/MV5BMTYxNjYxNjYxNV5BMl5BanBnXkFtZTgwNjYxNjYxNjM@._V1_FMjpg_UX1000_.jpg"
+						width="320" />
+					<div
+						class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
+						<i class="fas fa-play-circle"></i>
+					</div>
+				</div>
+				<!-- Filme 9: Westworld -->
+				<div aria-label="Abrir modal de Westworld" aria-pressed="false"
+					class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
+					data-category="series"
+					data-description="Westworld é uma série de ficção científica que explora um parque temático futurista habitado por androides."
+					data-iframe="https://embed.warezcdn.link/serie/tt0475784" data-title="Westworld" role="button"
+					tabindex="0">
+					<img alt="Poster da série Westworld com fundo escuro e rosto de androide"
+						class="w-full h-auto rounded" height="450" loading="lazy"
+						src="https://m.media-amazon.com/images/M/MV5BMTYxNjYxNjYxNV5BMl5BanBnXkFtZTgwNjYxNjYxNjM@._V1_FMjpg_UX1000_.jpg"
+						width="320" />
+					<div
+						class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
+						<i class="fas fa-play-circle"></i>
+					</div>
+				</div>
+				<!-- Filme 10: The Crown -->
+				<div aria-label="Abrir modal de The Crown" aria-pressed="false"
+					class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
+					data-category="series"
+					data-description="The Crown é uma série dramática que retrata a vida da Rainha Elizabeth II e os eventos que moldaram a segunda metade do século XX."
+					data-iframe="https://embed.warezcdn.link/serie/tt4786824" data-title="The Crown" role="button"
+					tabindex="0">
+					<img alt="Poster da série The Crown com fundo escuro e coroa dourada" class="w-full h-auto rounded"
+						height="450" loading="lazy"
+						src="https://m.media-amazon.com/images/M/MV5BMTYxNjYxNjYxNV5BMl5BanBnXkFtZTgwNjYxNjYxNjM@._V1_FMjpg_UX1000_.jpg"
+						width="320" />
+					<div
+						class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
+						<i class="fas fa-play-circle"></i>
+					</div>
+				</div>
+				<!-- Filme 11: Ozark -->
+				<div aria-label="Abrir modal de Ozark" aria-pressed="false"
+					class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
+					data-category="series"
+					data-description="Ozark é uma série dramática que acompanha um consultor financeiro que se muda para os Ozarks para lavar dinheiro para um cartel de drogas."
+					data-iframe="https://embed.warezcdn.link/serie/tt5071412" data-title="Ozark" role="button"
+					tabindex="0">
+					<img alt="Poster da série Ozark com fundo escuro e personagem principal"
+						class="w-full h-auto rounded" height="450" loading="lazy"
+						src="https://m.media-amazon.com/images/M/MV5BMTYxNjYxNjYxNV5BMl5BanBnXkFtZTgwNjYxNjYxNjM@._V1_FMjpg_UX1000_.jpg"
+						width="320" />
+					<div
+						class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
+						<i class="fas fa-play-circle"></i>
+					</div>
+				</div>
+				<!-- Filme 12: Black Mirror -->
+				<div aria-label="Abrir modal de Black Mirror" aria-pressed="false"
+					class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
+					data-category="series"
+					data-description="Black Mirror é uma série antológica que explora temas sombrios e satíricos relacionados à tecnologia e à sociedade moderna."
+					data-iframe="https://embed.warezcdn.link/serie/tt2085059" data-title="Black Mirror" role="button"
+					tabindex="0">
+					<img alt="Poster da série Black Mirror com fundo escuro e texto branco"
+						class="w-full h-auto rounded" height="450" loading="lazy"
+						src="https://m.media-amazon.com/images/M/MV5BMTYxNjYxNjYxNV5BMl5BanBnXkFtZTgwNjYxNjYxNjM@._V1_FMjpg_UX1000_.jpg"
+						width="320" />
+					<div
+						class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
+						<i class="fas fa-play-circle"></i>
+					</div>
+				</div>
+				<!-- Filme 13: The Boys -->
+				<div aria-label="Abrir modal de The Boys" aria-pressed="false"
+					class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
+					data-category="series"
+					data-description="The Boys é uma série que mostra um grupo de vigilantes que tenta derrubar super-heróis corruptos que abusam de seus poderes."
+					data-iframe="https://embed.warezcdn.link/serie/tt1190634" data-title="The Boys" role="button"
+					tabindex="0">
+					<img alt="Poster da série The Boys com fundo escuro e personagens principais"
+						class="w-full h-auto rounded" height="450" loading="lazy"
+						src="https://m.media-amazon.com/images/M/MV5BMTYxNjYxNjYxNV5BMl5BanBnXkFtZTgwNjYxNjYxNjM@._V1_FMjpg_UX1000_.jpg"
+						width="320" />
+					<div
+						class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
+						<i class="fas fa-play-circle"></i>
+					</div>
+				</div>
+				<!-- Filme 14: Mindhunter -->
+				<div aria-label="Abrir modal de Mindhunter" aria-pressed="false"
+					class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
+					data-category="series"
+					data-description="Mindhunter é uma série que acompanha agentes do FBI que entrevistam serial killers para entender sua psicologia."
+					data-iframe="https://embed.warezcdn.link/serie/tt5290382" data-title="Mindhunter" role="button"
+					tabindex="0">
+					<img alt="Poster da série Mindhunter com fundo escuro e personagens principais"
+						class="w-full h-auto rounded" height="450" loading="lazy"
+						src="https://m.media-amazon.com/images/M/MV5BMTYxNjYxNjYxNV5BMl5BanBnXkFtZTgwNjYxNjYxNjM@._V1_FMjpg_UX1000_.jpg"
+						width="320" />
+					<div
+						class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
+						<i class="fas fa-play-circle"></i>
+					</div>
+				</div>
+				<!-- Filme 15: House of Cards -->
+				<div aria-label="Abrir modal de House of Cards" aria-pressed="false"
+					class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
+					data-category="series"
+					data-description="House of Cards é uma série política que acompanha a ascensão de Frank Underwood, um político ambicioso e manipulador."
+					data-iframe="https://embed.warezcdn.link/serie/tt1856010" data-title="House of Cards" role="button"
+					tabindex="0">
+					<img alt="Poster da série House of Cards com fundo escuro e personagem principal"
+						class="w-full h-auto rounded" height="450" loading="lazy"
+						src="https://m.media-amazon.com/images/M/MV5BMTYxNjYxNjYxNV5BMl5BanBnXkFtZTgwNjYxNjYxNjM@._V1_FMjpg_UX1000_.jpg"
+						width="320" />
+					<div
+						class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
+						<i class="fas fa-play-circle"></i>
 					</div>
 				</div>
 			</div>
@@ -186,15 +402,13 @@
 				</h3>
 				<button aria-label="Fechar modal" class="text-gray-400 hover:text-red-600 transition text-2xl"
 					id="modal-close-btn" type="button">
-					<i class="fas fa-times">
-					</i>
+					<i class="fas fa-times"></i>
 				</button>
 			</div>
 			<div class="flex flex-col md:flex-row flex-grow overflow-hidden">
 				<div class="md:w-3/4 bg-black flex items-center justify-center p-4">
 					<iframe allowfullscreen="" class="w-full h-[480px] md:h-[600px] rounded" frameborder="0"
-						id="modal-iframe" loading="lazy" src="" title="Player do filme">
-					</iframe>
+						id="modal-iframe" loading="lazy" src="" title="Player do filme"></iframe>
 				</div>
 				<div class="md:w-1/4 p-6 overflow-y-auto">
 					<p class="mb-6 text-gray-300" id="modal-description">
@@ -217,6 +431,12 @@
 			const categoryButtons = document.querySelectorAll('#category-list button[data-category]');
 			const heroPlayBtn = document.getElementById('hero-play-btn');
 			const heroInfoBtn = document.getElementById('hero-info-btn');
+
+			// Mobile menu elements
+			const menuToggle = document.getElementById('menu-toggle');
+			const mobileMenu = document.getElementById('mobile-menu');
+			const mobileSearchInput = document.getElementById('mobile-search-input');
+			const mobileSearchBtn = document.getElementById('mobile-search-btn');
 
 			// Data for hero (Breaking Bad)
 			const heroData = {
@@ -262,7 +482,7 @@
 				}
 			});
 
-			// Open modal on movie click
+			// Open modal on movie click or keyboard enter/space
 			movieGrid.querySelectorAll('div[data-title]').forEach((movieDiv) => {
 				movieDiv.addEventListener('click', () => {
 					openModal(
@@ -285,7 +505,7 @@
 
 			// Search function
 			function filterMovies() {
-				const query = searchInput.value.trim().toLowerCase();
+				const query = (searchInput.value || mobileSearchInput.value).trim().toLowerCase();
 				const selectedCategory = document.querySelector('#category-list button[data-category].active')?.getAttribute('data-category') || 'all';
 
 				movieGrid.querySelectorAll('div[data-title]').forEach((movieDiv) => {
@@ -309,9 +529,15 @@
 					filterMovies();
 				}
 			});
+			mobileSearchInput.addEventListener('keydown', (e) => {
+				if (e.key === 'Enter') {
+					filterMovies();
+				}
+			});
 
 			// Search button click triggers search
 			searchBtn.addEventListener('click', filterMovies);
+			mobileSearchBtn.addEventListener('click', filterMovies);
 
 			// Category buttons click filter movies
 			categoryButtons.forEach((btn) => {
@@ -338,13 +564,19 @@
 			heroInfoBtn.addEventListener('click', () => {
 				openModal(heroData.title, heroData.description, heroData.iframe);
 			});
+
+			// Mobile menu toggle
+			menuToggle.addEventListener('click', () => {
+				const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+				menuToggle.setAttribute('aria-expanded', String(!expanded));
+				if (mobileMenu.classList.contains('hidden')) {
+					mobileMenu.classList.remove('hidden');
+				} else {
+					mobileMenu.classList.add('hidden');
+				}
+			});
 		})();
-
-
 	</script>
-	<script type='text/javascript'
-		src='//pl26465770.profitableratecpm.com/a5/23/70/a523700e309505e0d6de5a56a3e4aaf3.js'></script>
 </body>
-
 
 </html>
