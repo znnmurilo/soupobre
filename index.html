@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>
-    Pirataria Space &amp; Melhor site de Pirataria do Brasil
+        Pirataria Space &amp; Melhor site de Pirataria do Brasil
     </title>
     <script src="https://cdn.tailwindcss.com">
     </script>
@@ -110,6 +110,43 @@
     </style>
 
 </head>
+<!-- Modal -->
+<div id="welcome-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-gray-900 text-white rounded-lg shadow-xl p-6 max-w-md w-full">
+        <h2 class="text-xl font-bold mb-4">Bem-vindo ao nosso site experimental!</h2>
+        <p class="text-sm mb-4">Este site está em desenvolvimento. Agradecemos pela sua paciência. Para colaborar com os
+            desenvolvedores, ao clicar em "OK" você será redirecionado a uma nova janela 4 vezes, na quinta vez você
+            terá acesso ao site.</p>
+        <button id="ok-btn" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded text-white font-semibold">
+            Ok
+        </button>
+    </div>
+</div>
+
+<script>
+    // Função para abrir o modal quando a página carregar
+    window.onload = function () {
+        document.getElementById('welcome-modal').classList.remove('hidden');
+    }
+
+    let clickCount = 0;  // Contador de cliques no botão "Ok"
+    const externalSite = 'https://clinkspurtfirmly.com/g6nnsqx1?key=04feb67715bc563e56f0021c4386d332';  // Substitua pelo seu site externo
+
+    document.getElementById('ok-btn').addEventListener('click', function () {
+        clickCount++;
+
+        if (clickCount <= 4) {
+            // Nos 4 primeiros cliques, abre o site externo em nova guia
+            window.open(externalSite, '_blank');
+        }
+
+        if (clickCount === 5) {
+            // No 5º clique, fecha o modal
+            document.getElementById('welcome-modal').classList.add('hidden');
+        }
+    });
+</script>
+
 
 
 <body class="bg-black text-white min-h-screen flex flex-col">
@@ -121,7 +158,7 @@
             <img alt="Logo da Netflix em vermelho com texto branco sobre fundo preto" class="h-10 w-auto" height="40"
                 src="https://img.freepik.com/vetores-gratis/ilustracao-de-pirata-com-caveira-gritando_43623-898.jpg?semt=ais_hybrid&w=740"
                 width="100" />
-           
+
     </nav>
     <!-- Hero Section -->
     <header class="relative mt-16 w-full max-h-[400px] overflow-hidden md:max-h-[600px]">
@@ -137,9 +174,11 @@
             <h1 class="text-3xl md:text-5xl font-extrabold tracking-wide leading-tight">
                 Maior Hub de Pirataria Do Brasil </h1>
             <p class="text-gray-300 text-sm md:text-lg max-w-md">
-                Pirataria Space é um hub desenvolvido para anexar serviços piratas, como Filmes, Séries, Jogos,
-                Software, Licenças e entre outros. Apenas hospedamos os conteúdos, nenhum conteúdo presente no site é de
-                nossa autoria, apenas o indexamos.
+                Pirataria Space é um hub dedicado à indexação de serviços alternativos que disponibilizam filmes,
+                séries, jogos,
+                softwares, licenças e outros conteúdos. Não produzimos nem distribuímos nenhum material — apenas
+                hospedamos e
+                organizamos links já disponíveis na internet.
             </p>
 
         </div>
@@ -161,8 +200,7 @@
                     class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
                     data-category="jogos"
                     data-description="Grand Theft Auto V é um jogo de ação e aventura de 2013 desenvolvido pela Rockstar North e publicado pela Rockstar Games. É o sétimo título principal da série Grand Theft Auto, seguindo Grand Theft Auto IV de 2008, e o décimo quinto no total."
-                    data-iframe=""
-                    data-title="GTA 5 | GRAND THEFT AUTO 5" role="button" tabindex="0">
+                    data-iframe="" data-title="GTA 5 | GRAND THEFT AUTO 5" role="button" tabindex="0">
                     <img alt="Poster da série Breaking Bad com fundo escuro e texto amarelo"
                         class="w-full h-auto rounded" height="450" loading="lazy"
                         src="https://nxplaygames.com.br/wp-content/uploads/2020/09/gta5-pc-steam-key.jpg" width="320" />
@@ -176,8 +214,7 @@
                     class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
                     data-category="jogos"
                     data-description="Grand Theft Auto V é um jogo de ação e aventura de 2013 desenvolvido pela Rockstar North e publicado pela Rockstar Games. É o sétimo título principal da série Grand Theft Auto, seguindo Grand Theft Auto IV de 2008, e o décimo quinto no total."
-                    data-iframe=""
-                    data-title="RED DEAD 2 | RED DEAD REDEMPTION 2" role="button" tabindex="0">
+                    data-iframe="" data-title="RED DEAD 2 | RED DEAD REDEMPTION 2" role="button" tabindex="0">
                     <img alt="" class="w-full h-auto rounded" height="450" loading="lazy"
                         src="https://image.api.playstation.com/vulcan/ap/rnd/202308/0209/e02c2acc354f7377c8327491ad4527145cf07653d0615545.jpg"
                         width="320" />

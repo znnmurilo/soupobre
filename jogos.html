@@ -109,109 +109,120 @@
         }
     </style>
 
+
 </head>
 
 
 <body class="bg-black text-white min-h-screen flex flex-col">
-
     <!-- Navbar -->
     <nav
         class="flex items-center justify-between px-4 py-3 fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-90 flex-wrap md:flex-nowrap">
         <div class="flex items-center space-x-4 w-full md:w-auto">
             <img alt="Logo da Netflix em vermelho com texto branco sobre fundo preto" class="h-10 w-auto" height="40"
-                src="https://img.freepik.com/vetores-gratis/ilustracao-de-pirata-com-caveira-gritando_43623-898.jpg?semt=ais_hybrid&w=740"
+                src="https://img.freepik.com/vetores-gratis/ilustracao-de-pirata-com-caveira-gritando_43623-898.jpg"
                 width="100" />
-            <button aria-label="Solicitar filme" id="request-movie-btn">
-                <a href="index.html">Home</a>
+            <button aria-label="Solicitar filme"
+                class="ml-4 hidden md:inline-block bg-red-600 hover:bg-red-700 transition px-4 py-2 rounded font-semibold text-sm whitespace-nowrap">
+                Solicitar inclusão de catálogo
             </button>
+            <a href="index.html"
+                class="ml-2 bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded text-sm hidden md:inline-block">
+                Home
+            </a>
             <button aria-expanded="false" aria-label="Abrir menu"
-                class="md:hidden text-white focus:outline-none focus:ring-2 focus:ring-red-600 ml-auto"
-                id="menu-toggle">
-                <i class="fas fa-bars text-2xl">
-                </i>
+                class="md:hidden text-white focus:outline-none focus:ring-2 focus:ring-red-600 ml-auto" id="menu-toggle">
+                <i class="fas fa-bars text-2xl"></i>
             </button>
         </div>
-        <ul class="hidden md:flex space-x-6 font-semibold text-sm flex-wrap md:flex-nowrap w-full md:w-auto mt-3 md:mt-0"
-            id="category-list">
-            <li>
-                <button class="hover:text-red-600 transition focus:outline-none" data-category="all" type="button">
-                    Todos
-                </button>
-            </li>
-            <li>
-                <button class="hover:text-red-600 transition focus:outline-none" data-category="jogos" type="button">
-                    Jogos
-                </button>
-            </li>
-            <li>
-                <button class="hover:text-red-600 transition focus:outline-none" data-category="dlcs" type="button">
-                    DLC's
-                </button>
-            </li>
-        </ul>
+    
         <div
             class="flex items-center space-x-4 text-sm font-semibold mt-4 md:mt-0 w-full md:w-auto justify-between md:justify-start">
+            <!-- Desktop Search -->
             <div class="relative w-full md:w-auto hidden md:block">
                 <input aria-label="Pesquisar filmes"
                     class="rounded bg-gray-900 px-3 py-1 w-full md:w-48 focus:outline-none focus:ring-2 focus:ring-red-600"
                     id="search-input" placeholder="Pesquisar" type="search" />
                 <button class="absolute right-1 top-1 text-gray-400 hover:text-red-600 transition" id="search-btn"
                     type="button">
-                    <i class="fas fa-search">
-                    </i>
+                    <i class="fas fa-search"></i>
                 </button>
             </div>
             <button class="hover:text-red-600 transition hidden md:block" type="button">
                 Pesquisar
             </button>
             <button class="hover:text-red-600 transition hidden md:block" type="button">
-                <i class="fas fa-bell">
-                </i>
+                <i class="fas fa-bell"></i>
             </button>
-
-            <!-- Mobile Search and buttons -->
-            <div class="w-full md:hidden hidden mt-4 space-y-4" id="mobile-menu">
-                <div class="relative w-full">
-                    <input aria-label="Pesquisar filmes"
-                        class="rounded bg-gray-900 px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-red-600"
-                        id="mobile-search-input" placeholder="Pesquisar" type="search" />
-                    <button class="absolute right-2 top-2 text-gray-400 hover:text-red-600 transition"
-                        id="mobile-search-btn" type="button">
-                        <i class="fas fa-search">
-                        </i>
-                    </button>
-                </div>
-                <div class="flex space-x-6 font-semibold text-sm justify-center">
-                    <button class="hover:text-red-600 transition" type="button" id="mobile-request-movie-btn">
-                        Solicitar inclusão de catálogo
-                    </button>
-                    <button class="hover:text-red-600 transition" type="button">
-                        <i class="fas fa-bell">
-                        </i>
-                    </button>
-                </div>
+        </div>
+    
+        <!-- Mobile Menu -->
+        <div class="w-full md:hidden hidden mt-4 space-y-4" id="mobile-menu">
+            <div class="relative w-full">
+                <input aria-label="Pesquisar filmes"
+                    class="rounded bg-gray-900 px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-red-600"
+                    id="mobile-search-input" placeholder="Pesquisar" type="search" />
+                
+            </div>
+            
+                <button class="hover:text-red-600 transition" type="button">
+                    <i class="fas fa-bell"></i>
+                </button>
+                <a href="index.html" class="hover:text-red-600 transition">Home</a>
+            </div>
+        </div>
     </nav>
-    <!-- Hero Section -->
-    <header class="relative mt-16 w-full max-h-[400px] overflow-hidden md:max-h-[600px]">
-        <img alt="Imagem de destaque da série Breaking Bad com tema escuro e realces em vermelho"
-            class="w-full h-auto object-cover max-h-[400px] md:max-h-[600px]" height="400" loading="lazy"
-            src="https://oblogpave.wordpress.com/wp-content/uploads/2017/04/pirate-skull-banner-wallpaper-2560x1440.jpg?w=640"
-            width="1920" />
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent">
-        </div>
-        <script type='text/javascript'
-            src='//clinkspurtfirmly.com/7d/41/e2/7d41e2b92cc598a62014bb82d72f4e4f.js'></script>
-        <div class="absolute bottom-8 left-4 max-w-xl space-y-3 md:bottom-16 md:left-8">
-            <h1 class="text-3xl md:text-5xl font-extrabold tracking-wide leading-tight">
-                Jogos </h1>
-            <p class="text-gray-300 text-sm md:text-lg max-w-md">
-                Pirataria Space é um hub desenvolvido para anexar serviços piratas, como Filmes, Séries, Jogos,
-                Software, Licenças e entre outros. Apenas hospedamos os conteúdos, nenhum conteúdo presente no site é de
-                nossa autoria, apenas o indexamos.
-            </p>
+    
+    <!-- Script para funcionar o menu mobile -->
+    <script>
+        const toggleBtn = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
 
+        toggleBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+    <!-- Hero Section -->
+<header class="relative mt-16 w-full max-h-[400px] overflow-hidden md:max-h-[600px]">
+    <img alt="Imagem de destaque da série Breaking Bad com tema escuro e realces em vermelho"
+        class="w-full h-auto object-cover max-h-[400px] md:max-h-[600px]" height="400" loading="lazy"
+        src="https://oblogpave.wordpress.com/wp-content/uploads/2017/04/pirate-skull-banner-wallpaper-2560x1440.jpg?w=640"
+        width="1920" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+    <div class="absolute bottom-8 left-4 max-w-xl space-y-3 md:bottom-16 md:left-8">
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-wide leading-tight">
+            Jogos
+        </h1>
+        <p class="text-gray-300 text-sm md:text-lg max-w-md">
+            Encontre tutoriais, instruções e muito mais.
+        </p>
+        <div class="flex space-x-3">
+            <a href="https://seulink.com/tutorial" target="_blank"
+                class="bg-red-600 hover:bg-red-700 transition px-5 py-2 rounded font-semibold flex items-center space-x-2 text-sm md:text-base">
+                <i class="fas fa-play"></i>
+                <span>Tutorial</span>
+            </a>
+            <button onclick="document.getElementById('info-modal').classList.remove('hidden')"
+                class="bg-gray-700 bg-opacity-70 hover:bg-opacity-90 transition px-5 py-2 rounded font-semibold flex items-center space-x-2 text-sm md:text-base">
+                <i class="fas fa-info-circle"></i>
+                <span>Info</span>
+            </button>
         </div>
-    </header>
+    </div>
+</header>
+
+<!-- Modal de Instruções -->
+<div id="info-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-gray-900 text-white rounded-lg shadow-xl p-6 max-w-md w-full space-y-4">
+        <h2 class="text-xl font-bold">Instruções</h2>
+        <p>Para acessar os jogos, escolha a plataforma desejada e siga o tutorial disponível. Certifique-se de usar uma
+            VPN se necessário.</p>
+        <button onclick="document.getElementById('info-modal').classList.add('hidden')"
+            class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded font-semibold">
+            Fechar
+        </button>
+    </div>
+</div>
 
 
 
@@ -229,9 +240,9 @@
                     class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
                     data-category="jogos"
                     data-description="Grand Theft Auto V é um jogo de ação e aventura de 2013 desenvolvido pela Rockstar North e publicado pela Rockstar Games. É o sétimo título principal da série Grand Theft Auto, seguindo Grand Theft Auto IV de 2008, e o décimo quinto no total."
-                    data-iframe="" data-title="GTA 5 | GRAND THEFT AUTO 5" role="button" tabindex="0">
-                    <img alt="Poster da série Breaking Bad com fundo escuro e texto amarelo"
-                        class="w-full h-auto rounded" height="450" loading="lazy"
+                    data-iframe="https://indexdc.com.br/wp-content/uploads/2019/09/neuromarketing-2.gif" data-title="GTA 5 | GRAND THEFT AUTO 5" role="button" tabindex="0">
+                    <img alt="Poster da série Breaking Bad com fundo escuro e texto amarelo" class="w-full h-auto rounded"
+                        height="450" loading="lazy"
                         src="https://nxplaygames.com.br/wp-content/uploads/2020/09/gta5-pc-steam-key.jpg" width="320" />
                     <div
                         class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
@@ -243,7 +254,7 @@
                     class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
                     data-category="jogos"
                     data-description="Grand Theft Auto V é um jogo de ação e aventura de 2013 desenvolvido pela Rockstar North e publicado pela Rockstar Games. É o sétimo título principal da série Grand Theft Auto, seguindo Grand Theft Auto IV de 2008, e o décimo quinto no total."
-                    data-iframe="h" data-title="RED DEAD 2 | RED DEAD REDEMPTION 2" role="button" tabindex="0">
+                    data-iframe="https://indexdc.com.br/wp-content/uploads/2019/09/neuromarketing-2.gif" data-title="RED DEAD 2 | RED DEAD REDEMPTION 2" role="button" tabindex="0">
                     <img alt="" class="w-full h-auto rounded" height="450" loading="lazy"
                         src="https://image.api.playstation.com/vulcan/ap/rnd/202308/0209/e02c2acc354f7377c8327491ad4527145cf07653d0615545.jpg"
                         width="320" />
@@ -253,9 +264,9 @@
                         </i>
                     </div>
                 </div>
-
-
-
+    
+    
+    
             </div>
         </section>
     </main>
@@ -276,8 +287,8 @@
             </div>
             <div class="flex flex-col md:flex-row flex-grow overflow-hidden">
                 <div class="md:w-3/4 bg-black flex items-center justify-center p-4">
-                    <iframe allowfullscreen="" class="w-full h-[320px] sm:h-[480px] md:h-[600px] rounded"
-                        frameborder="0" id="modal-iframe" loading="lazy" src="" title="Player do filme">
+                    <iframe allowfullscreen="" class="w-full h-[320px] sm:h-[480px] md:h-[600px] rounded" frameborder="0"
+                        id="modal-iframe" loading="lazy" src="" title="Player do filme">
                     </iframe>
                 </div>
                 <div class="md:w-1/4 p-6 overflow-y-auto max-h-[320px] sm:max-h-[480px] md:max-h-[600px]">
@@ -285,20 +296,12 @@
                         Descrição do filme ou série.
                     </p>
                     <p>
-                        *É necessário ter o uTorrent Web instalado no seu computador para abrir a tela ao lado. Você
-                        pode baixar por aqui para prosseguir com o download.
-
+                        *Em desenvolvimento, aguarde que em breve terá as opções de download onde esse macaco ta batando um prato ;)
+    
                     </p>
                     <p>
                     <p>
-                    <div class="container">
-                        <h1>
-                            <p>.</p>
-                        </h1>
-
-                        <a href="https://www.utorrent.com/web/downloads/complete/track/stable/os/win/" target="_blank"
-                            rel="noopener noreferrer" class="button">Download uTorrent</a>
-                    </div>
+                   
                     </p>
                     </p>
                 </div>
@@ -312,7 +315,7 @@
             <input type="text" name="name" placeholder="Seu nome" required>
             <input type="email" name="email" placeholder="Seu email" required>
             <textarea name="message"
-                placeholder="Solicite um jogo no catálogo, será disponibilizado em até 48h e será alertado em seu email quando disponível."
+                placeholder="Solicite um filme no catálogo, será disponibilizado em até 48h e será alertado em seu email quando disponível."
                 required></textarea>
             <button type="submit">Solicitar inclusão de catálogo</button>
 
