@@ -3,8 +3,11 @@
 <head>
 	<meta charset="utf-8" />
 	<meta content="width=device-width, initial-scale=1" name="viewport" />
-	<title>Netflix Clone - Breaking Bad &amp; Better Call Saul</title>
-	<script src="https://cdn.tailwindcss.com"></script>
+	<title>
+		Netflix Clone - Breaking Bad &amp; Better Call Saul
+	</title>
+	<script src="https://cdn.tailwindcss.com">
+	</script>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap" rel="stylesheet" />
 	<style>
@@ -26,110 +29,100 @@
 		body.modal-open {
 			overflow: hidden;
 		}
-
-		/* Modal fade transition */
-		.modal-transition {
-			transition: opacity 0.3s ease;
-		}
 	</style>
 </head>
 
 <body class="bg-black text-white min-h-screen flex flex-col">
 	<!-- Navbar -->
-	<nav
-		class="flex items-center justify-between px-4 sm:px-6 md:px-6 py-4 fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-90">
-		<!-- Hamburger menu button -->
-		<button id="hamburger-btn" aria-label="Abrir menu" aria-expanded="false"
-			class="text-white text-2xl focus:outline-none md:hidden">
-			<i class="fas fa-bars"></i>
-		</button>
-		<!-- Categories menu -->
-		<ul id="category-list"
-			class="fixed top-16 left-0 w-64 bg-black bg-opacity-95 h-full transform -translate-x-full transition-transform duration-300 md:relative md:top-0 md:left-0 md:w-auto md:h-auto md:bg-transparent md:flex md:space-x-6 md:translate-x-0 font-semibold text-sm z-50">
-			<li>
-				<button
-					class="block w-full text-left px-6 py-3 hover:text-red-600 transition focus:outline-none md:inline"
-					data-category="all" type="button">Todos</button>
-			</li>
-			<li>
-				<button
-					class="block w-full text-left px-6 py-3 hover:text-red-600 transition focus:outline-none md:inline"
-					data-category="series" type="button">Séries</button>
-			</li>
-			<li>
-				<button
-					class="block w-full text-left px-6 py-3 hover:text-red-600 transition focus:outline-none md:inline"
-					data-category="filmes" type="button">Filmes</button>
-			</li>
-		</ul>
-		<!-- Search input -->
-		<div class="relative hidden md:block">
-			<input aria-label="Pesquisar filmes"
-				class="rounded bg-gray-900 px-3 py-1 w-48 focus:outline-none focus:ring-2 focus:ring-red-600"
-				id="search-input" placeholder="Pesquisar" type="search" />
-			<button class="absolute right-1 top-1 text-gray-400 hover:text-red-600 transition" id="search-btn"
-				type="button" aria-label="Pesquisar">
-				<i class="fas fa-search"></i>
-			</button>
+	<nav class="flex items-center justify-between px-6 py-4 fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-90">
+		<div class="flex items-center space-x-6">
+			<img alt="Logo da Netflix em vermelho com texto branco sobre fundo preto" class="h-10 w-auto" height="40"
+				src="https://storage.googleapis.com/a1aa/image/b99f5e7f-3a6b-4a25-5d22-1b783849e613.jpg" width="100" />
+			<ul class="hidden md:flex space-x-6 font-semibold text-sm" id="category-list">
+				<li>
+					<button class="hover:text-red-600 transition focus:outline-none" data-category="all">
+						Todos
+					</button>
+				</li>
+				<li>
+					<button class="hover:text-red-600 transition focus:outline-none" data-category="series">
+						Series
+					</button>
+				</li>
+				<li>
+					<button class="hover:text-red-600 transition focus:outline-none" data-category="bettercallsaul">
+						Filmes
+					</button>
+				</li>
+			</ul>
 		</div>
-		<!-- Email request button -->
-		<button id="request-btn"
-			class="ml-4 bg-red-600 hover:bg-red-700 transition px-4 py-1 rounded font-semibold text-sm hidden md:block"
-			type="button" aria-haspopup="dialog" aria-controls="request-modal">
-			Solicitar Série/Filme
-		</button>
+		<div class="flex items-center space-x-4 text-sm font-semibold">
+			<div class="relative hidden md:block">
+				<input aria-label="Pesquisar filmes"
+					class="rounded bg-gray-900 px-3 py-1 w-48 focus:outline-none focus:ring-2 focus:ring-red-600"
+					id="search-input" placeholder="Pesquisar" type="search" />
+				<button class="absolute right-1 top-1 text-gray-400 hover:text-red-600 transition" id="search-btn"
+					type="button">
+					<i class="fas fa-search">
+					</i>
+				</button>
+			</div>
+			<button class="hover:text-red-600 transition">
+				Sou pobre
+			</button>
+			<button class="hover:text-red-600 transition">
+				<i class="fas fa-bell">
+				</i>
+			</button>
+			<img alt="Avatar do usuário com letra U em fundo cinza" class="rounded cursor-pointer" height="32"
+				src="https://storage.googleapis.com/a1aa/image/756fdd9c-bde7-49e1-3a01-d6212b72027f.jpg" width="32" />
+		</div>
 	</nav>
-
-	<!-- Mobile Search below navbar -->
-	<div class="fixed top-16 left-0 right-0 bg-black bg-opacity-90 p-4 z-40 md:hidden flex items-center space-x-2">
-		<input aria-label="Pesquisar filmes"
-			class="rounded bg-gray-900 px-3 py-1 w-full focus:outline-none focus:ring-2 focus:ring-red-600"
-			id="search-input-mobile" placeholder="Pesquisar" type="search" />
-		<button class="text-gray-400 hover:text-red-600 transition" id="search-btn-mobile" type="button"
-			aria-label="Pesquisar">
-			<i class="fas fa-search"></i>
-		</button>
-	</div>
-
 	<!-- Hero Section -->
-	<header class="relative mt-24 w-full max-h-[600px] overflow-hidden">
+	<header class="relative mt-16 w-full max-h-[600px] overflow-hidden">
 		<img alt="Imagem de destaque da série Breaking Bad com tema escuro e realces em vermelho"
 			class="w-full h-auto object-cover max-h-[600px]" height="600" loading="lazy"
 			src="https://i0.wp.com/conciliarpost.com/wp-content/uploads/2014/09/breaking_bad_fb_banner_by_cartoonperson-d5628z3.png?fit=851%2C314&ssl=1"
 			width="1920" />
-		<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-		<div class="absolute bottom-16 left-4 sm:left-8 max-w-xl space-y-4">
-			<h1 class="text-3xl sm:text-5xl font-extrabold tracking-wide">
+		<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent">
+		</div>
+		<div class="absolute bottom-16 left-8 max-w-xl space-y-4">
+			<h1 class="text-5xl font-extrabold tracking-wide">
 				Breaking Bad
 			</h1>
-			<p class="text-gray-300 text-sm sm:text-lg max-w-md">
+			<p class="text-gray-300 text-lg max-w-md">
 				Um professor de química do ensino médio diagnosticado com câncer de pulmão se volta para a fabricação de
 				metanfetamina para garantir o futuro financeiro de sua família.
 			</p>
 			<div class="flex space-x-4">
 				<button
-					class="bg-red-600 hover:bg-red-700 transition px-4 sm:px-6 py-2 rounded font-semibold flex items-center space-x-2 text-sm sm:text-base"
+					class="bg-red-600 hover:bg-red-700 transition px-6 py-2 rounded font-semibold flex items-center space-x-2"
 					id="hero-play-btn" type="button">
-					<i class="fas fa-play"></i>
-					<span>Assistir</span>
+					<i class="fas fa-play">
+					</i>
+					<span>
+						Assistir
+					</span>
 				</button>
 				<button
-					class="bg-gray-700 bg-opacity-70 hover:bg-opacity-90 transition px-4 sm:px-6 py-2 rounded font-semibold flex items-center space-x-2 text-sm sm:text-base"
+					class="bg-gray-700 bg-opacity-70 hover:bg-opacity-90 transition px-6 py-2 rounded font-semibold flex items-center space-x-2"
 					id="hero-info-btn" type="button">
-					<i class="fas fa-info-circle"></i>
-					<span>Mais Informações</span>
+					<i class="fas fa-info-circle">
+					</i>
+					<span>
+						Mais Informações
+					</span>
 				</button>
 			</div>
 		</div>
 	</header>
-
 	<!-- Main Content -->
-	<main class="flex-grow px-4 sm:px-6 md:px-6 py-8 space-y-10">
+	<main class="flex-grow px-6 py-8 space-y-10">
 		<section>
-			<h2 class="text-xl sm:text-2xl font-bold mb-4">
+			<h2 class="text-2xl font-bold mb-4">
 				Filmes e Séries
 			</h2>
-			<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6" id="movie-grid">
+			<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6" id="movie-grid">
 				<!-- Filme 1: Breaking Bad -->
 				<div aria-label="Abrir modal de Breaking Bad" aria-pressed="false"
 					class="cursor-pointer rounded overflow-hidden relative group" data-category="series"
@@ -142,7 +135,8 @@
 						width="320" />
 					<div
 						class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
-						<i class="fas fa-play-circle"></i>
+						<i class="fas fa-play-circle">
+						</i>
 					</div>
 				</div>
 				<!-- Filme 2: Better Call Saul -->
@@ -157,98 +151,57 @@
 						width="320" />
 					<div
 						class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
-						<i class="fas fa-play-circle"></i>
+						<i class="fas fa-play-circle">
+						</i>
 					</div>
 				</div>
-				<div aria-label="Abrir modal de Narcos" aria-pressed="false"
+				<div aria-label="Abrir modal de Better Call Saul" aria-pressed="false"
 					class="cursor-pointer rounded overflow-hidden relative group" data-category="series"
 					data-description="Narcos é uma série original da Netflix que narra a ascensão e queda dos maiores cartéis de drogas da América Latina. As duas primeiras temporadas focam em Pablo Escobar e o Cartel de Medellín, mostrando seu poder, brutalidade e influência nos anos 1980. A terceira temporada acompanha a luta contra o Cartel de Cali, após a queda de Escobar. A trama mistura eventos reais com dramatização, destacando o trabalho da DEA (agência antidrogas dos EUA) e a complexa relação entre política, violência e tráfico de drogas."
 					data-iframe="https://embed.warezcdn.link/serie/tt2707408" data-title="Narcos" role="button"
 					tabindex="0">
-					<img alt="Poster da série Narcos com fundo escuro e texto amarelo" class="w-full h-auto rounded"
-						height="450" loading="lazy"
+					<img alt="Poster da série Better Call Saul com fundo escuro e texto amarelo"
+						class="w-full h-auto rounded" height="450" loading="lazy"
 						src="https://m.media-amazon.com/images/M/MV5BNzQwOTcwMzIwN15BMl5BanBnXkFtZTgwMjYxMTA0NjE@._V1_FMjpg_UX1000_.jpg"
 						width="320" />
 					<div
 						class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
-						<i class="fas fa-play-circle"></i>
+						<i class="fas fa-play-circle">
+						</i>
 					</div>
 				</div>
 			</div>
 		</section>
 	</main>
-
-	<!-- Modal Player -->
+	<!-- Modal -->
 	<div aria-describedby="modal-description" aria-hidden="true" aria-labelledby="modal-title" aria-modal="true"
-		class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center p-4 z-50 opacity-0 pointer-events-none modal-transition"
+		class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center p-4 z-50 opacity-0 pointer-events-none transition-opacity"
 		id="modal" role="dialog">
-		<div
-			class="bg-gray-900 rounded-lg max-w-6xl w-full max-h-[90vh] overflow-hidden flex flex-col sm:flex-row sm:items-stretch relative">
-			<div class="sm:w-3/4 bg-black flex items-center justify-center p-2 sm:p-4">
-				<iframe allowfullscreen="" class="w-full h-[320px] sm:h-[600px] rounded" frameborder="0"
-					id="modal-iframe" loading="lazy" src="" title="Player do filme"></iframe>
+		<div class="bg-gray-900 rounded-lg max-w-6xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+			<div class="flex justify-between items-center p-4 border-b border-gray-700">
+				<h3 class="text-xl font-bold" id="modal-title">
+					Título do Filme
+				</h3>
+				<button aria-label="Fechar modal" class="text-gray-400 hover:text-red-600 transition text-2xl"
+					id="modal-close-btn" type="button">
+					<i class="fas fa-times">
+					</i>
+				</button>
 			</div>
-			<div class="sm:w-1/4 p-4 overflow-y-auto max-h-[90vh]">
-				<h3 class="text-xl font-bold mb-4" id="modal-title">Título do Filme</h3>
-				<p class="text-gray-300" id="modal-description">Descrição do filme ou série.</p>
+			<div class="flex flex-col md:flex-row flex-grow overflow-hidden">
+				<div class="md:w-3/4 bg-black flex items-center justify-center p-4">
+					<iframe allowfullscreen="" class="w-full h-[480px] md:h-[600px] rounded" frameborder="0"
+						id="modal-iframe" loading="lazy" src="" title="Player do filme">
+					</iframe>
+				</div>
+				<div class="md:w-1/4 p-6 overflow-y-auto">
+					<p class="mb-6 text-gray-300" id="modal-description">
+						Descrição do filme ou série.
+					</p>
+				</div>
 			</div>
-			<button aria-label="Fechar modal"
-				class="absolute top-3 right-3 text-gray-400 hover:text-red-600 transition text-3xl sm:text-4xl z-50"
-				id="modal-close-btn" type="button">
-				<i class="fas fa-times"></i>
-			</button>
 		</div>
 	</div>
-
-	<!-- Modal Welcome -->
-	<div aria-describedby="welcome-description" aria-hidden="true" aria-labelledby="welcome-title" aria-modal="true"
-		class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center p-4 z-60 opacity-0 pointer-events-none modal-transition"
-		id="welcome-modal" role="dialog">
-		<div class="bg-gray-900 rounded-lg max-w-md w-full p-6 text-center relative">
-			<h2 class="text-2xl font-bold mb-4" id="welcome-title">Bem-vindo ao Netflix Clone!</h2>
-			<p class="text-gray-300 mb-6" id="welcome-description">Obrigado por visitar nosso site.</p>
-			<button id="welcome-ok-btn"
-				class="bg-red-600 hover:bg-red-700 transition px-6 py-2 rounded font-semibold text-white focus:outline-none focus:ring-2 focus:ring-red-600"
-				type="button">OK</button>
-		</div>
-	</div>
-
-	<!-- Modal Request -->
-	<div aria-describedby="request-description" aria-hidden="true" aria-labelledby="request-title" aria-modal="true"
-		class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center p-4 z-70 opacity-0 pointer-events-none modal-transition"
-		id="request-modal" role="dialog">
-		<div class="bg-gray-900 rounded-lg max-w-md w-full p-6 relative">
-			<h2 class="text-2xl font-bold mb-4" id="request-title">Solicitar Série ou Filme</h2>
-			<form id="request-form" class="space-y-4">
-				<div>
-					<label for="email" class="block mb-1 font-semibold">Seu e-mail</label>
-					<input type="email" id="email" name="email" required
-						class="w-full rounded bg-gray-800 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-red-600" />
-				</div>
-				<div>
-					<label for="request-text" class="block mb-1 font-semibold">Nome da série ou filme</label>
-					<textarea id="request-text" name="request-text" rows="3" required
-						class="w-full rounded bg-gray-800 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-red-600 resize-none"></textarea>
-				</div>
-				<div class="flex justify-end space-x-4">
-					<button type="button" id="request-cancel-btn"
-						class="bg-gray-700 hover:bg-gray-600 transition px-4 py-2 rounded font-semibold focus:outline-none focus:ring-2 focus:ring-red-600">
-						Cancelar
-					</button>
-					<button type="submit"
-						class="bg-red-600 hover:bg-red-700 transition px-4 py-2 rounded font-semibold focus:outline-none focus:ring-2 focus:ring-red-600">
-						Enviar
-					</button>
-				</div>
-			</form>
-			<button aria-label="Fechar modal"
-				class="absolute top-3 right-3 text-gray-400 hover:text-red-600 transition text-3xl z-50"
-				id="request-close-btn" type="button">
-				<i class="fas fa-times"></i>
-			</button>
-		</div>
-	</div>
-
 	<script>
 		(() => {
 			const modal = document.getElementById('modal');
@@ -257,25 +210,11 @@
 			const modalIframe = document.getElementById('modal-iframe');
 			const modalCloseBtn = document.getElementById('modal-close-btn');
 			const movieGrid = document.getElementById('movie-grid');
-			const searchInputDesktop = document.getElementById('search-input');
-			const searchBtnDesktop = document.getElementById('search-btn');
-			const searchInputMobile = document.getElementById('search-input-mobile');
-			const searchBtnMobile = document.getElementById('search-btn-mobile');
+			const searchInput = document.getElementById('search-input');
+			const searchBtn = document.getElementById('search-btn');
 			const categoryButtons = document.querySelectorAll('#category-list button[data-category]');
 			const heroPlayBtn = document.getElementById('hero-play-btn');
 			const heroInfoBtn = document.getElementById('hero-info-btn');
-
-			const welcomeModal = document.getElementById('welcome-modal');
-			const welcomeOkBtn = document.getElementById('welcome-ok-btn');
-
-			const requestModal = document.getElementById('request-modal');
-			const requestBtn = document.getElementById('request-btn');
-			const requestCloseBtn = document.getElementById('request-close-btn');
-			const requestCancelBtn = document.getElementById('request-cancel-btn');
-			const requestForm = document.getElementById('request-form');
-
-			const hamburgerBtn = document.getElementById('hamburger-btn');
-			const categoryList = document.getElementById('category-list');
 
 			// Data for hero (Breaking Bad)
 			const heroData = {
@@ -292,6 +231,7 @@
 				modal.classList.remove('opacity-0', 'pointer-events-none');
 				modal.setAttribute('aria-hidden', 'false');
 				document.body.classList.add('modal-open');
+				// Focus modal close button for accessibility
 				modalCloseBtn.focus();
 			}
 
@@ -343,9 +283,7 @@
 
 			// Search function
 			function filterMovies() {
-				const queryDesktop = searchInputDesktop ? searchInputDesktop.value.trim().toLowerCase() : '';
-				const queryMobile = searchInputMobile ? searchInputMobile.value.trim().toLowerCase() : '';
-				const query = queryDesktop || queryMobile;
+				const query = searchInput.value.trim().toLowerCase();
 				const selectedCategory = document.querySelector('#category-list button[data-category].active')?.getAttribute('data-category') || 'all';
 
 				movieGrid.querySelectorAll('div[data-title]').forEach((movieDiv) => {
@@ -363,31 +301,15 @@
 				});
 			}
 
-			// Search input enter key triggers search (desktop)
-			if (searchInputDesktop) {
-				searchInputDesktop.addEventListener('keydown', (e) => {
-					if (e.key === 'Enter') {
-						filterMovies();
-					}
-				});
-			}
-			// Search input enter key triggers search (mobile)
-			if (searchInputMobile) {
-				searchInputMobile.addEventListener('keydown', (e) => {
-					if (e.key === 'Enter') {
-						filterMovies();
-					}
-				});
-			}
+			// Search input enter key triggers search
+			searchInput.addEventListener('keydown', (e) => {
+				if (e.key === 'Enter') {
+					filterMovies();
+				}
+			});
 
-			// Search button click triggers search (desktop)
-			if (searchBtnDesktop) {
-				searchBtnDesktop.addEventListener('click', filterMovies);
-			}
-			// Search button click triggers search (mobile)
-			if (searchBtnMobile) {
-				searchBtnMobile.addEventListener('click', filterMovies);
-			}
+			// Search button click triggers search
+			searchBtn.addEventListener('click', filterMovies);
 
 			// Category buttons click filter movies
 			categoryButtons.forEach((btn) => {
@@ -395,11 +317,6 @@
 					categoryButtons.forEach((b) => b.classList.remove('active', 'text-red-600'));
 					btn.classList.add('active', 'text-red-600');
 					filterMovies();
-					// Close mobile menu if open
-					if (window.innerWidth < 768) {
-						categoryList.classList.add('-translate-x-full');
-						hamburgerBtn.setAttribute('aria-expanded', 'false');
-					}
 				});
 			});
 
@@ -411,138 +328,13 @@
 			});
 
 			// Hero play button opens modal with hero data
-			if (heroPlayBtn) {
-				heroPlayBtn.addEventListener('click', () => {
-					openModal(heroData.title, heroData.description, heroData.iframe);
-				});
-			}
+			heroPlayBtn.addEventListener('click', () => {
+				openModal(heroData.title, heroData.description, heroData.iframe);
+			});
 
 			// Hero info button opens modal with hero data (same as play for demo)
-			if (heroInfoBtn) {
-				heroInfoBtn.addEventListener('click', () => {
-					openModal(heroData.title, heroData.description, heroData.iframe);
-				});
-			}
-
-			// Welcome modal logic
-			const welcomeOkBtn = document.getElementById('welcome-ok-btn');
-			const welcomeModal = document.getElementById('welcome-modal');
-
-			function openWelcomeModal() {
-				welcomeModal.classList.remove('opacity-0', 'pointer-events-none');
-				welcomeModal.setAttribute('aria-hidden', 'false');
-				document.body.classList.add('modal-open');
-				welcomeOkBtn.focus();
-			}
-
-			function closeWelcomeModal() {
-				welcomeModal.classList.add('opacity-0', 'pointer-events-none');
-				welcomeModal.setAttribute('aria-hidden', 'true');
-				document.body.classList.remove('modal-open');
-			}
-
-			welcomeOkBtn.addEventListener('click', closeWelcomeModal);
-
-			document.addEventListener('keydown', (e) => {
-				if (e.key === 'Escape' && welcomeModal.getAttribute('aria-hidden') === 'false') {
-					closeWelcomeModal();
-				}
-			});
-
-			welcomeModal.addEventListener('click', (e) => {
-				if (e.target === welcomeModal) {
-					closeWelcomeModal();
-				}
-			});
-
-			window.addEventListener('load', () => {
-				openWelcomeModal();
-			});
-
-			// Hamburger menu toggle
-			hamburgerBtn.addEventListener('click', () => {
-				const expanded = hamburgerBtn.getAttribute('aria-expanded') === 'true';
-				if (expanded) {
-					categoryList.classList.add('-translate-x-full');
-					hamburgerBtn.setAttribute('aria-expanded', 'false');
-				} else {
-					categoryList.classList.remove('-translate-x-full');
-					hamburgerBtn.setAttribute('aria-expanded', 'true');
-				}
-			});
-
-			// Close menu on resize if desktop
-			window.addEventListener('resize', () => {
-				if (window.innerWidth >= 768) {
-					categoryList.classList.remove('-translate-x-full');
-					hamburgerBtn.setAttribute('aria-expanded', 'false');
-				} else {
-					categoryList.classList.add('-translate-x-full');
-					hamburgerBtn.setAttribute('aria-expanded', 'false');
-				}
-			});
-
-			// Initialize menu state on load
-			if (window.innerWidth < 768) {
-				categoryList.classList.add('-translate-x-full');
-				hamburgerBtn.setAttribute('aria-expanded', 'false');
-			} else {
-				categoryList.classList.remove('-translate-x-full');
-				hamburgerBtn.setAttribute('aria-expanded', 'false');
-			}
-
-			// Request modal logic
-			const requestModalEl = document.getElementById('request-modal');
-			const requestBtnEl = document.getElementById('request-btn');
-			const requestCloseBtnEl = document.getElementById('request-close-btn');
-			const requestCancelBtnEl = document.getElementById('request-cancel-btn');
-			const requestFormEl = document.getElementById('request-form');
-
-			function openRequestModal() {
-				requestModalEl.classList.remove('opacity-0', 'pointer-events-none');
-				requestModalEl.setAttribute('aria-hidden', 'false');
-				document.body.classList.add('modal-open');
-				requestFormEl.querySelector('input, textarea').focus();
-			}
-
-			function closeRequestModal() {
-				requestModalEl.classList.add('opacity-0', 'pointer-events-none');
-				requestModalEl.setAttribute('aria-hidden', 'true');
-				document.body.classList.remove('modal-open');
-				requestFormEl.reset();
-			}
-
-			requestBtnEl.addEventListener('click', openRequestModal);
-			requestCloseBtnEl.addEventListener('click', closeRequestModal);
-			requestCancelBtnEl.addEventListener('click', closeRequestModal);
-
-			requestModalEl.addEventListener('click', (e) => {
-				if (e.target === requestModalEl) {
-					closeRequestModal();
-				}
-			});
-
-			document.addEventListener('keydown', (e) => {
-				if (e.key === 'Escape' && requestModalEl.getAttribute('aria-hidden') === 'false') {
-					closeRequestModal();
-				}
-			});
-
-			// Handle form submission (simulate email sending)
-			requestFormEl.addEventListener('submit', (e) => {
-				e.preventDefault();
-				const email = requestFormEl.email.value.trim();
-				const requestText = requestFormEl['request-text'].value.trim();
-
-				if (!email || !requestText) {
-					alert('Por favor, preencha todos os campos.');
-					return;
-				}
-
-				// Simulate sending email (here just alert)
-				alert(`Obrigado pela sua solicitação!\n\nE-mail: ${email}\nSérie/Filme: ${requestText}`);
-
-				closeRequestModal();
+			heroInfoBtn.addEventListener('click', () => {
+				openModal(heroData.title, heroData.description, heroData.iframe);
 			});
 		})();
 	</script>
