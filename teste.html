@@ -1,1 +1,592 @@
-Jogos
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>
+        Sou Pobre &amp; Melhor site de filmes e séries do
+    </title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Scrollbar for horizontal scroll */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Modal scrollbar fix */
+        body.modal-open {
+            overflow: hidden;
+        }
+    </style>
+    <style>
+        .footer-form {
+            background-color: #111;
+            padding: 40px 20px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .form-email {
+            max-width: 600px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-email h2 {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            color: #f5f5f5;
+        }
+
+        .form-email input,
+        .form-email textarea {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: #222;
+            color: #fff;
+            resize: none;
+        }
+
+        .form-email textarea {
+            min-height: 120px;
+        }
+
+        .form-email button {
+            padding: 12px;
+            background-color: #DC2626;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .form-email button:hover {
+            background-color: #B91C1C;
+        }
+
+        /* Estilo do botão de redirecionamento */
+        .redirect-button {
+            padding: 12px;
+            background-color: #DC2626;
+            /* Cor de fundo */
+            color: white;
+            /* Cor do texto */
+            border: none;
+            /* Sem borda */
+            border-radius: 8px;
+            /* Bordas arredondadas */
+            cursor: pointer;
+            /* Cursor de ponteiro */
+            font-weight: bold;
+            /* Texto em negrito */
+            transition: background 0.3s;
+            /* Transição suave */
+        }
+
+        .redirect-button:hover {
+            background-color: #B91C1C;
+            /* Cor ao passar o mouse */
+        }
+    </style>
+    <script async="" crossorigin="anonymous"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7764305677166223">
+        </script>
+</head>
+
+
+<body class="bg-black text-white min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <nav
+        class="flex items-center justify-between px-4 py-3 fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-90 flex-wrap md:flex-nowrap">
+        <div class="flex items-center space-x-4 w-full md:w-auto">
+            <img alt="Logo da Netflix em vermelho com texto branco sobre fundo preto" class="h-10 w-auto" height="40"
+                src="https://pbs.twimg.com/profile_images/2264417871/5p6h9teah98pzp567ayd_400x400.jpeg" width="100" />
+            <button aria-label="Solicitar filme" id="request-movie-btn"
+                class="ml-4 hidden md:inline-block bg-red-600 hover:bg-red-700 transition px-4 py-2 rounded font-semibold text-sm whitespace-nowrap">
+                Solicitar inclusão de catálogo
+            </button>
+            <button aria-expanded="false" aria-label="Abrir menu"
+                class="md:hidden text-white focus:outline-none focus:ring-2 focus:ring-red-600 ml-auto"
+                id="menu-toggle">
+                <i class="fas fa-bars text-2xl">
+                </i>
+            </button>
+        </div>
+        <ul class="hidden md:flex space-x-6 font-semibold text-sm flex-wrap md:flex-nowrap w-full md:w-auto mt-3 md:mt-0"
+            id="category-list">
+            <li>
+                <button class="hover:text-red-600 transition focus:outline-none" data-category="all" type="button">
+                    Todos
+                </button>
+            </li>
+            <li>
+                <button class="hover:text-red-600 transition focus:outline-none" data-category="jogos" type="button">
+                    Jogos
+                </button>
+            </li>
+            <li>
+                <button class="hover:text-red-600 transition focus:outline-none" data-category="dlcs" type="button">
+                    DLC's
+                </button>
+            </li>
+        </ul>
+        <div
+            class="flex items-center space-x-4 text-sm font-semibold mt-4 md:mt-0 w-full md:w-auto justify-between md:justify-start">
+            <div class="relative w-full md:w-auto hidden md:block">
+                <input aria-label="Pesquisar filmes"
+                    class="rounded bg-gray-900 px-3 py-1 w-full md:w-48 focus:outline-none focus:ring-2 focus:ring-red-600"
+                    id="search-input" placeholder="Pesquisar" type="search" />
+                <button class="absolute right-1 top-1 text-gray-400 hover:text-red-600 transition" id="search-btn"
+                    type="button">
+                    <i class="fas fa-search">
+                    </i>
+                </button>
+            </div>
+            <button class="hover:text-red-600 transition hidden md:block" type="button">
+                Pesquisar
+            </button>
+            <button class="hover:text-red-600 transition hidden md:block" type="button">
+                <i class="fas fa-bell">
+                </i>
+            </button>
+
+            <!-- Mobile Search and buttons -->
+            <div class="w-full md:hidden hidden mt-4 space-y-4" id="mobile-menu">
+                <div class="relative w-full">
+                    <input aria-label="Pesquisar filmes"
+                        class="rounded bg-gray-900 px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-red-600"
+                        id="mobile-search-input" placeholder="Pesquisar" type="search" />
+                    <button class="absolute right-2 top-2 text-gray-400 hover:text-red-600 transition"
+                        id="mobile-search-btn" type="button">
+                        <i class="fas fa-search">
+                        </i>
+                    </button>
+                </div>
+                <div class="flex space-x-6 font-semibold text-sm justify-center">
+                    <button class="hover:text-red-600 transition" type="button" id="mobile-request-movie-btn">
+                        Solicitar inclusão de catálogo
+                    </button>
+                    <button class="hover:text-red-600 transition" type="button">
+                        <i class="fas fa-bell">
+                        </i>
+                    </button>
+                </div>
+    </nav>
+    <!-- Hero Section -->
+    <header class="relative mt-16 w-full max-h-[400px] overflow-hidden md:max-h-[600px]">
+        <img alt="Imagem de destaque da série Breaking Bad com tema escuro e realces em vermelho"
+            class="w-full h-auto object-cover max-h-[400px] md:max-h-[600px]" height="400" loading="lazy"
+            src="https://oblogpave.wordpress.com/wp-content/uploads/2017/04/pirate-skull-banner-wallpaper-2560x1440.jpg?w=640"
+            width="1920" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent">
+        </div>
+        <div class="absolute bottom-8 left-4 max-w-xl space-y-3 md:bottom-16 md:left-8">
+            <h1 class="text-3xl md:text-5xl font-extrabold tracking-wide leading-tight">
+                Portal de Jogos Crackeados da pirataria.space </h1>
+            <p class="text-gray-300 text-sm md:text-lg max-w-md">
+                Baixe jogos e dlcs sem se preocupar com vírus ou demais problemas para sua máquina. Todos os links são
+                verificados diariamente para evitar danos ao seu computador.
+            </p>
+
+        </div>
+    </header>
+    <style>
+        /* Estilos do botão */
+        .button {
+            cursor: pointer;
+            width: fit-content;
+            height: fit-content;
+            padding: 15px;
+            background-color: rgb(223, 223, 223);
+            border-left: 3px solid white;
+            border-top: 3px solid white;
+            border-right: 3px solid gray;
+            border-bottom: 3px solid gray;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 1.1rem;
+            font-weight: 900;
+            outline: 2px solid black;
+            text-decoration: none;
+            /* Remove underline do link */
+            color: black;
+            /* Cor do texto */
+        }
+
+        .button:hover {
+            background-color: rgb(0, 197, 0);
+            color: white;
+            outline-color: white;
+            border-left: 3px solid rgb(0, 255, 0);
+            border-top: 3px solid rgb(0, 255, 0);
+            border-right: 3px solid green;
+            border-bottom: 3px solid green;
+        }
+
+        .button:active {
+            border-left: 3px solid green;
+            border-top: 3px solid green;
+            border-right: 3px solid rgb(0, 255, 0);
+            border-bottom: 3px solid rgb(0, 255, 0);
+        }
+
+        /* Estilo para centralizar o botão */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            /* Centraliza horizontalmente */
+            margin: 20px 0;
+            /* Margem superior e inferior para espaçamento */
+        }
+    </style>
+    </head>
+    <!-- Contêiner do botão -->
+    <div class="button-container">
+        <a href="index.html" class="button">Voltar aos filmes</a>
+    </div>
+
+
+
+
+
+    <!-- Main Content -->
+    <main class="flex-grow px-4 sm:px-6 py-6 space-y-8 max-w-screen-lg mx-auto w-full">
+        <section>
+            <h2 class="text-xl md:text-2xl font-bold mb-4">
+                Jogos
+            </h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 md:grid-cols-4 gap-6" id="movie-grid" tabindex="0">
+                <!-- Filme 1: Breaking Bad -->
+                <div aria-label="Abrir modal de Breaking Bad" aria-pressed="false"
+                    class="cursor-pointer rounded overflow-hidden relative group focus:outline-none focus:ring-2 focus:ring-red-600"
+                    data-category="jogos"
+                    data-description="Grand Theft Auto V é um jogo de ação e aventura de 2013 desenvolvido pela Rockstar North e publicado pela Rockstar Games. É o sétimo título principal da série Grand Theft Auto, seguindo Grand Theft Auto IV de 2008, e o décimo quinto no total."
+                    data-iframe="https://utweb.rainberrytv.com/gui/index.html?v=1.4.0.6042&localauth=localapie25b0362bbf0e5d5:#/dashboard"
+                    data-title="TESTE GTA" role="button" tabindex="0">
+                    <img alt="Poster da série Breaking Bad com fundo escuro e texto amarelo"
+                        class="w-full h-auto rounded" height="450" loading="lazy"
+                        src="https://upload.wikimedia.org/wikipedia/pt/8/80/Grand_Theft_Auto_V_capa.png" width="320" />
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition flex items-center justify-center text-red-600 text-3xl">
+                        <i class="fas fa-play-circle">
+                        </i>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Modal -->
+    <div aria-describedby="modal-description" aria-hidden="true" aria-labelledby="modal-title" aria-modal="true"
+        class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center p-4 z-50 opacity-0 pointer-events-none transition-opacity"
+        id="modal" role="dialog">
+        <div class="bg-gray-900 rounded-lg max-w-6xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+            <div class="flex justify-between items-center p-4 border-b border-gray-700">
+                <h3 class="text-xl font-bold" id="modal-title">
+                    Título do Filme
+                </h3>
+                <button aria-label="Fechar modal" class="text-gray-400 hover:text-red-600 transition text-2xl"
+                    id="modal-close-btn" type="button">
+                    <i class="fas fa-times">
+                    </i>
+                </button>
+            </div>
+            <div class="flex flex-col md:flex-row flex-grow overflow-hidden">
+                <div class="md:w-3/4 bg-black flex items-center justify-center p-4">
+                    <iframe allowfullscreen="" class="w-full h-[320px] sm:h-[480px] md:h-[600px] rounded"
+                        frameborder="0" id="modal-iframe" loading="lazy" src="" title="Player do filme">
+                    </iframe>
+                </div>
+                <div class="md:w-1/4 p-6 overflow-y-auto max-h-[320px] sm:max-h-[480px] md:max-h-[600px]">
+                    <p class="mb-6 text-gray-300" id="modal-description">
+                        Descrição do filme ou série.
+                    </p>
+                    <p>
+                        *É necessário ter o uTorrent Web instalado no seu computador para abrir a tela ao lado. Você
+                        pode baixar por aqui para prosseguir com o download.
+
+                    </p>
+                    <p>
+                    <p>
+                    <div class="container">
+                        <h1>
+                            <p>.</p>
+                        </h1>
+
+                        <a href="https://www.utorrent.com/web/downloads/complete/track/stable/os/win/" target="_blank"
+                            rel="noopener noreferrer" class="button">Download uTorrent</a>
+                    </div>
+                    </p>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Rodapé com formulário -->
+    <footer class="footer-form" id="request-form-section">
+        <form action="https://formsubmit.co/modsfax@gmail.com" method="POST" class="form-email">
+            <h2>Solicitar inclusão de catálogo</h2>
+            <input type="text" name="name" placeholder="Seu nome" required>
+            <input type="email" name="email" placeholder="Seu email" required>
+            <textarea name="message"
+                placeholder="Solicite um filme no catálogo, será disponibilizado em até 48h e será alertado em seu email quando disponível."
+                required></textarea>
+            <button type="submit">Solicitar inclusão de catálogo</button>
+
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://soupobre.vercel.app/">
+        </form>
+
+    </footer>
+
+    <style>
+        .footer-form {
+            background-color: #111;
+            padding: 40px 20px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .form-email {
+            max-width: 600px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-email h2 {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            color: #f5f5f5;
+        }
+
+        .form-email input,
+        .form-email textarea {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: #222;
+            color: #fff;
+            resize: none;
+        }
+
+        .form-email textarea {
+            min-height: 120px;
+        }
+
+        .form-email button {
+            padding: 12px;
+            background-color: #DC2626;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .form-email button:hover {
+            background-color: #B91C1C;
+        }
+    </style>
+
+    <script>
+        (() => {
+            const modal = document.getElementById('modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDescription = document.getElementById('modal-description');
+            const modalIframe = document.getElementById('modal-iframe');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+            const movieGrid = document.getElementById('movie-grid');
+            const searchInput = document.getElementById('search-input');
+            const searchBtn = document.getElementById('search-btn');
+            const categoryButtons = document.querySelectorAll('#category-list button[data-category]');
+            const heroPlayBtn = document.getElementById('hero-play-btn');
+            const heroInfoBtn = document.getElementById('hero-info-btn');
+
+            // Mobile menu elements
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileSearchInput = document.getElementById('mobile-search-input');
+            const mobileSearchBtn = document.getElementById('mobile-search-btn');
+
+            // Request movie buttons
+            const requestMovieBtn = document.getElementById('request-movie-btn');
+            const mobileRequestMovieBtn = document.getElementById('mobile-request-movie-btn');
+            const requestFormSection = document.getElementById('request-form-section');
+
+            // Data for hero (Breaking Bad)
+            const heroData = {
+                title: "Breaking Bad",
+                description: "Um professor de química do ensino médio diagnosticado com câncer de pulmão se volta para a fabricação de metanfetamina para garantir o futuro financeiro de sua família.",
+                iframe: "https://embed.warezcdn.link/serie/tt0903747"
+            };
+
+            // Open modal function
+            function openModal(title, description, iframeSrc) {
+                modalTitle.textContent = title;
+                modalDescription.textContent = description;
+                modalIframe.src = iframeSrc;
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('modal-open');
+                // Focus modal close button for accessibility
+                modalCloseBtn.focus();
+            }
+
+            // Close modal function
+            function closeModal() {
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                modal.setAttribute('aria-hidden', 'true');
+                modalIframe.src = '';
+                document.body.classList.remove('modal-open');
+            }
+
+            // Click outside modal content closes modal
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // Close modal on close button click
+            modalCloseBtn.addEventListener('click', closeModal);
+
+            // Close modal on ESC key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') {
+                    closeModal();
+                }
+            });
+
+            // Open modal on movie click or keyboard enter/space
+            movieGrid.querySelectorAll('div[data-title]').forEach((movieDiv) => {
+                movieDiv.addEventListener('click', () => {
+                    openModal(
+                        movieDiv.getAttribute('data-title'),
+                        movieDiv.getAttribute('data-description'),
+                        movieDiv.getAttribute('data-iframe')
+                    );
+                });
+                movieDiv.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openModal(
+                            movieDiv.getAttribute('data-title'),
+                            movieDiv.getAttribute('data-description'),
+                            movieDiv.getAttribute('data-iframe')
+                        );
+                    }
+                });
+            });
+
+            // Search function
+            function filterMovies() {
+                const query = (searchInput.value || mobileSearchInput.value).trim().toLowerCase();
+                const selectedCategory = document.querySelector('#category-list button[data-category].active')?.getAttribute('data-category') || 'all';
+
+                movieGrid.querySelectorAll('div[data-title]').forEach((movieDiv) => {
+                    const title = movieDiv.getAttribute('data-title').toLowerCase();
+                    const category = movieDiv.getAttribute('data-category').toLowerCase();
+
+                    const matchesSearch = title.includes(query);
+                    const matchesCategory = selectedCategory === 'all' || category === selectedCategory;
+
+                    if (matchesSearch && matchesCategory) {
+                        movieDiv.classList.remove('hidden');
+                    } else {
+                        movieDiv.classList.add('hidden');
+                    }
+                });
+            }
+
+            // Search input enter key triggers search
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    filterMovies();
+                }
+            });
+            mobileSearchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    filterMovies();
+                }
+            });
+
+            // Search button click triggers search
+            searchBtn.addEventListener('click', filterMovies);
+            mobileSearchBtn.addEventListener('click', filterMovies);
+
+            // Category buttons click filter movies
+            categoryButtons.forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    categoryButtons.forEach((b) => b.classList.remove('active', 'text-red-600'));
+                    btn.classList.add('active', 'text-red-600');
+                    filterMovies();
+                });
+            });
+
+            // Initialize category active to "all"
+            categoryButtons.forEach((btn) => {
+                if (btn.getAttribute('data-category') === 'all') {
+                    btn.classList.add('active', 'text-red-600');
+                }
+            });
+
+            // Hero play button opens modal with hero data
+            heroPlayBtn.addEventListener('click', () => {
+                openModal(heroData.title, heroData.description, heroData.iframe);
+            });
+
+            // Hero info button opens modal with hero data (same as play for demo)
+            heroInfoBtn.addEventListener('click', () => {
+                openModal(heroData.title, heroData.description, heroData.iframe);
+            });
+
+            // Mobile menu toggle
+            menuToggle.addEventListener('click', () => {
+                const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                menuToggle.setAttribute('aria-expanded', String(!expanded));
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('hidden');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+
+            // Scroll to request form on clicking request movie buttons
+            function scrollToRequestForm() {
+                requestFormSection.scrollIntoView({ behavior: 'smooth' });
+            }
+
+            requestMovieBtn.addEventListener('click', scrollToRequestForm);
+            mobileRequestMovieBtn.addEventListener('click', () => {
+                // Also close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+                scrollToRequestForm();
+            });
+        })();
+    </script>
+</body>
+
+</html>
